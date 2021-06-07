@@ -46,15 +46,4 @@ const orders = [
 const products = factory(library, orders);
 console.log(products);
 
-function newPrint(device){
 
-    device.print = () =>{
-        console.log(`${device.name} is printing again`);
-    }
-    device.run = () =>{
-        console.log(`${device.name} can scan`);
-    }
-}
-
-newPrint(products[0]);
-products[0].run();
