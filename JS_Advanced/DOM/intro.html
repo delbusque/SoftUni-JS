@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <div id='wrapper'>
+        <h1>INTRO to JSON DOM</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, eius.</p>
+
+        <section id='superhero-section'>
+            <h2 id="superheroes-heading">Superheroes</h2>
+            <button id='show-hide-button' onclick="showHideHeroes();">Hide</button>
+            <ul id="superhero-list">
+                <li class='good'>Superman</li>
+                <li class='good'>Captain America</li>
+                <li class='evil'>Darkseid</li>
+            </ul>
+        </section>
+        <label for="superhero-name">Add Superhero</label>
+        <input type="text" id='superhero-name' />
+
+        <button id='add-superhero' onclick='addSuperhero();'>Add</button>
+    </div>
+
+    <script src='./script.js'></script>
+
+    <script>
+        console.log('I`m a jsScript!')
+    </script>
+
+</body>
+
+</html>
