@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superheroes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Superheroes</h2>
+    <ul id="heroes-list">
+        <li>Superman</li>
+        <li>Batman</li>
+        <li>Thor</li>
+    </ul>
+
+    <label for="heroes-input">Add heroes</label>
+    <input type="text" id="heroes-input">
+    <button id="add-heroe-button" onclick="addHeroe();">Add</button>
+
+    <script>
+        let heroeNameInputElement = document.getElementById('heroes-input');
+        let heroesListElement = document.getElementById('heroes-list');
+
+        function addHeroe() {
+            let newSuperhero = document.createElement('li');
+            newSuperhero.textContent = heroeNameInputElement.value;
+            heroesListElement.appendChild(newSuperhero);
+                
+            heroeNameInputElement.value = '';
+        }
+
+
+    </script>
+</body>
+
+</html>
