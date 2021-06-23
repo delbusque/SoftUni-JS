@@ -1,3 +1,7 @@
 function validate() {
-    console.log('TODO:...');
+    let inputElement = document.querySelector('input');
+
+    
+
+    
 }
