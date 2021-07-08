@@ -4,12 +4,12 @@ function attachEvents() {
     const forecastElement = document.getElementById('forecast');
     let errorDivElement = document.createElement('div');
     errorDivElement.classList.add('label', 'bl');
-    forecastElement.appendChild(errorDivElement);           
+    forecastElement.appendChild(errorDivElement);
 
 
     let url = 'http://localhost:3030/jsonstore/forecaster/locations';
 
-    submitButton.addEventListener('click', async () => {     
+    submitButton.addEventListener('click', async () => {
         try {
             errorDivElement.textContent = '';
             const currentFcastDivElement = document.getElementById('current');
@@ -18,14 +18,16 @@ function attachEvents() {
                     i != 0 ? a.remove() : a;
                 })
             const upcomingDivElement = document.getElementById('upcoming');
+
+
             Array.from(upcomingDivElement.querySelectorAll('div'))
                 .forEach((a, i) => {
                     i != 0 ? a.remove() : a;
                 })
 
             forecastElement.style.display = 'block';
-         
-            let location = document.getElementById('location').value;
+
+            let location = docum ent.getElementById('location').value;
             let response = await fetch(url);
             let data = await response.json();
             let currentLocation = '';
