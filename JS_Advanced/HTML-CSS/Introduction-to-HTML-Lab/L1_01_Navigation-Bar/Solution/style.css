@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+nav {
+    background-color: #234465;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    padding: 1em;
+    justify-content: center;
+    margin: 0;
+}
+
+nav li {
+    margin-left: 2.2em;
+}
+
+nav li:nth-of-type(1) {
+    margin-left: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
