@@ -2,11 +2,18 @@ body {
     margin: 0;
 }
 
-nav {
-    background-color: #234465;
+h1 {
+    text-align: center;
 }
 
-ul {
+nav {
+    background-color: #234465;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul,
+li {
     list-style: none;
     display: flex;
     padding: 1em;
@@ -18,12 +25,30 @@ nav li {
     margin-left: 2.2em;
 }
 
-nav li:nth-of-type(1) {
-    margin-left: 0;
-}
-
 nav li a {
     text-decoration: none;
     color: aliceblue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+nav li:nth-of-type(1) {
+    margin-left: 0;
+}
+
+@media(max-width: 768px) {
+    nav,
+    ul,
+    li {
+        flex-direction: column;
+        padding: 0.4em;
+        align-items: center;
+    }
+    nav li {
+        margin-left: 0;
+    }
+    h1 {
+        display: flex;
+        font-size: 1.5em;
+        justify-content: center;
+    }
 }
