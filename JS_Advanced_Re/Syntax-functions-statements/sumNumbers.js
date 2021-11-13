@@ -9,4 +9,5 @@ function solve(inpA, inpB) {
     console.log(result)
 }
 
-solve('1', '3')
+solve('1', '3');
+solve('10', '31');
