@@ -12,12 +12,12 @@ function solve(area, vol, input) {
     return output;
 }
 
-function  area()  {    
-    return  Math.abs(this.x  *  this.y);
+function area() {
+    return Math.abs(this.x * this.y);
 };
 
-function  vol()  {    
-    return  Math.abs(this.x  *  this.y  *  this.z);
+function vol() {
+    return Math.abs(this.x * this.y * this.z);
 };
 
 console.log(solve(area, vol, `[
