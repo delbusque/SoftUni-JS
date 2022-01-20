@@ -1,5 +1,6 @@
 function solve(array) {
-    const createVehicle = () => {
+
+    function createVehicle() {
         const vehicles = {};
         return {
             create: (name, inherit, parentname) => {
@@ -12,11 +13,8 @@ function solve(array) {
                     logs.push(`${key}:${vehicles[name][key]}`);
                 }
                 console.log(logs.join(", "));
-                console.log(vehicles);
-
             }
         }
-
     }
 
     // action.create('c1');
