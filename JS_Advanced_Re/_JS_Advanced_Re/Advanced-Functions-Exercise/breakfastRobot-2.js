@@ -1,6 +1,6 @@
 function breakfastRobot() {
     const restockProduct = {
-        carbohydrates: 0,
+        carbohydrate: 0,
         flavour: 0,
         protein: 0,
         fat: 0
@@ -52,9 +52,15 @@ function breakfastRobot() {
 }
 
 const manager = breakfastRobot();
-console.log(manager('restock carbohydrates 10 '));
-console.log(manager('restock flavour 10'));
-console.log(manager('prepare apple 1'));
-console.log(manager('restock fat 10 '));
-console.log(manager('prepare burger 1 '));
+
+console.log(manager("prepare turkey 1"));
+console.log(manager("restock protein 10"));
+console.log(manager("prepare turkey 1"));
+console.log(manager("restock carbohydrate 10"));
+console.log(manager("prepare turkey 1"));
+console.log(manager("restock fat 10"));
+console.log(manager("prepare turkey 1"));
+console.log(manager("restock flavour 10"));
+console.log(manager("prepare turkey 1"));
+
 console.log(manager('report'));
