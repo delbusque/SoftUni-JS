@@ -1,6 +1,6 @@
 function solution() {
 
-    let stock = {
+    let restockProduct = {
         'protein': 0,
         'carbohydrate': 0,
         'fat': 0,
@@ -34,48 +34,56 @@ function solution() {
         },
     }
 
-    function management(order) {
-        let currOrder = order.split(' ');
-        let [command, type, value] = currOrder;
-        value = Number(value);
+    const action = {
+        restock: (microelement, quantity) => {
+            restockProduct[microelement] += quantity
+            return `Success`;
+        },
+        prepare: (product, quantity) => {
+            const ingredients = Object.keys(recipes[product]);
 
-        if (command == 'restock') {
-            stock[type] += value;
-            return 'Success';
-
-        } else if (command == 'prepare') {
-            for (const food in recipes) {
-                if (food == type) {
-                    for (const key in recipes[type]) {
-                        if (recipes[type][key] * value > stock[key]) {
-                            return `Error: not enough ${key} in stock`;
-                        }
-                    }
-                    for (const key in stock) {
-                        if (recipes[food][key]) {
-                            stock[key] -= recipes[food][key];
-                        }
-                    }
-                    return 'Success';
+            for (const ingredian of ingredients) {
+                if (restockProduct[ingredian] < recipes[product][ingredian] * quantity) {
+                    return `Error: not enough ${ingredian} in stock`;
                 }
             }
-        } else if (command == 'report') {
-            return `protein=${stock[`protein`]} carbohydrate=${stock[`carbohydrate`]} fat=${stock[`fat`]} flavour=${stock[`flavour`]}`;
-        }
+
+            ingredients.forEach((ingredian) => {
+                restockProduct[ingredian] -= recipes[product][ingredian] * quantity;
+            });
+
+            return 'Success';
+        },
+        report: () => {
+            return Object.keys(restockProduct)
+                .reduce((a, c) => {
+                    a.push(`${c}=${restockProduct[c]}`);
+                    return a;
+                }, [])
+                .join(' ');
+        },
+    }
+
+
+    function management(args) {
+        [command, product, value] = args.split(" ");
+        value = Number(value);
+        return action[command](product, value);
     }
 
     return management;
 }
 
 let manager = solution();
+
 console.log(manager("prepare turkey 1"));
-console.log(manager("restock protein 10")); 
+console.log(manager("restock protein 10"));
 console.log(manager("prepare turkey 1"));
-console.log(manager("restock carbohydrate 10")); 
+console.log(manager("restock carbohydrate 10"));
 console.log(manager("prepare turkey 1"));
-console.log(manager("restock fat 10")); 
+console.log(manager("restock fat 10"));
 console.log(manager("prepare turkey 1"));
-console.log(manager("restock flavour 10")); 
+console.log(manager("restock flavour 10"));
 console.log(manager("prepare turkey 1"));
 
 console.log(manager('report'));
