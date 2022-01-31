@@ -60,7 +60,6 @@ function solution(arg) {
             result.push(scoredPost['downvotes']);
             result.push(scoredPost['totalScore']);
             result.push(rating);
-
         }
     }
 
