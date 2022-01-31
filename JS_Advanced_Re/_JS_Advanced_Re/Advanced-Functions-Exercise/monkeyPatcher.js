@@ -6,69 +6,81 @@ let post = {
     downvotes: 100
 };
 
-function solution(ar) {
+function solution(arg) {
+    let post = this;
+    let command = arg;
+    let result = [];
 
-    let status = '';
+    let commands = {
+        upvote() {
+            post['upvotes'] += 1;
+        },
+        downvote() {
+            post['downvotes'] += 1;
+        },
 
-    let score = () => {
-        let currUps = this.upvotes;
-        let currDowns = this.downvotes;
-
-        let check = () => {
-            if (this.upvotes + this.downvotes > 50) {
-                if (this.upvotes >= this.downvotes) {
-                    let addedNum = Math.ceil(this.upvotes * 0.25);
-                    currUps += addedNum;
-                    currDowns += addedNum;
-                } else {
-                    let addedNum = Math.ceil(this.downvotes * 0.25);
-                    currUps += addedNum;
-                    currDowns += addedNum;
-                }
+        score() {
+            let scoredPost = {
+                upvotes: post['upvotes'],
+                downvotes: post['downvotes'],
+                totalScore: post['upvotes'] - post['downvotes'],
             }
 
-            if (currUps / currDowns >= 2) {
-                status = 'hot';
-            } else if (currUps / currDowns < 2 && currUps >= currDowns) {
-                if (currDowns + currUps > 100) {
-                    status = 'controversial'
-                }
-            } else if (currDowns > currUps) {
-                if (currUps + currDowns >= 10) {
-                    status = 'unpopular';
+            let rating = '';
+            let totalVotes = post['upvotes'] + post['downvotes'];
+
+            if (totalVotes > 50) {
+                let addedNumb = 0;
+                post['upvotes'] >= post['downvotes'] ? addedNumb = post['upvotes'] * 0.25 :
+                    addedNumb = post['downvotes'] * 0.25;
+                addedNumb = Math.ceil(addedNumb);
+                scoredPost['upvotes'] += addedNumb;
+                scoredPost['downvotes'] += addedNumb;
+            }
+
+            if (totalVotes >= 10) {
+                if (post['upvotes'] / (totalVotes) > 0.66) {
+                    rating = 'hot';
                 } else {
-                    status = 'new';
+                    if (post['upvotes'] >= post['downvotes']) {
+                        if (totalVotes > 100) {
+                            rating = 'controversial';
+                        } else {
+                            rating = 'new';
+                        }
+                    } else {
+                        rating = 'unpopular';
+                    }
                 }
             } else {
-                status = 'new';
+                rating = 'new';
             }
-        };
 
-        check();
+            result.push(scoredPost['upvotes']);
+            result.push(scoredPost['downvotes']);
+            result.push(scoredPost['totalScore']);
+            result.push(rating);
 
-        let forumLog = [];
-
-        forumLog.push(currUps);
-        forumLog.push(currDowns);
-        forumLog.push(currUps - currDowns);
-        forumLog.push(status);
-
-        return console.log(forumLog);;
+        }
     }
 
-    if (ar == 'upvote') {
-        this.upvotes += 1;
-    } else if (ar == 'downvote') {
-        this.downvotes += 1;
-    } else if (ar = 'score') {
-        score();
+    if (command == 'upvote') {
+        commands.upvote();
+    } else if (command == 'downvote') {
+        commands.downvote();
+    } else if (command == 'score') {
+        commands.score();
+        return result;
     }
 }
 
 
-
 solution.call(post, 'upvote');
 solution.call(post, 'downvote');
-let score = solution.call(post, 'score'); // [127, 127, 0, 'controversial']
-solution.call(post, 'downvote'); // (executed 50 times)
-score = solution.call(post, 'score'); // [139, 189, -50, 'unpopular']
+let score = console.log(solution.call(post, 'score')); // [127, 127, 0, 'controversial']
+
+for (let index = 0; index < 50; index++) {
+    solution.call(post, 'downvote'); // (executed 50 times)   
+}
+
+score = console.log(solution.call(post, 'score')); // [139, 189, -50, 'unpopular']
