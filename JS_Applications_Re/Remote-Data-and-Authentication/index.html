@@ -6,17 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
-    <h2>Movie List</h2>
-    <div>
-        <button id="show-movies">Show Movies</button>
-    </div>
-    <section id='movie-list'>
-
+    <section id="register-login">
+        <h3>Register</h3>
+        <form id="register-user">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <input type="submit" id="register-button" value="Register">
+        </form>
+        <h3>Login</h3>
+        <form id="login-user">
+            <label for="loginEmail">E-mail</label>
+            <input type="text" id="loginEmail" name="email">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="password">
+            <input type="submit" id="login-button" value="Login">
+        </form>
     </section>
+
+    <section id="add-movies" class="hide">
+        <h3>Add Movie</h3>
+        <form id="movie-data">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+            <input type="submit" value="Add Movie">
+
+        </form>
+    </section>
+
+    <section id='movie-list' class="hide">
+        <h3>Movie List</h3>
+        <div>
+            <button id="show-movies">Show Movies</button>
+        </div>
+        <section id="movies-list">
+        </section>
+    </section>
+
+    <p>
+        <div id="logout" class="hide">
+            <button>Logout</button>
+        </div>
+    </p>
+
 
 
 
