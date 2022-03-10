@@ -16,17 +16,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand nav hidden" href="#">Nav</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" data-link="books" aria-current="page" href="#">Books</a>
-                    <a class="nav-link" data-link="library" href="#">Library</a>
-                    <a class="nav-link" data-link="login" href="#">Login</a>
-                    <a class="nav-link" data-link="register" href="#">Register</a>
-                    <a class="nav-link hidden" data-link="logout" href="#">Logout</a>
+                    <a id='library-nav' class="nav-link hidden" data-link="library" href="#">My Library</a>
+                    <a id='login-nav' class="nav-link" data-link="login" href="#">Login</a>
+                    <a id='register-nav' class="nav-link" data-link="register" href="#">Register</a>
+                    <a id='logout-nav' class="nav-link hidden" data-link="logout" href="#">Logout</a>
 
                 </div>
             </div>
@@ -37,31 +37,33 @@
         <form class="row g-3">
             <div class="col-auto">
                 <label for="staticEmail2" class="visually-hidden">Email</label>
-                <input type="text" class="form-control" id="staticEmail2" value="Email">
+                <input type="text" class="form-control" id="staticEmail2" placeholder="Email" name="email">
             </div>
             <div class="col-auto">
                 <label for="inputPassword2" class="visually-hidden">Password</label>
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Password" name="password">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                <input type="submit" class="btn btn-primary mb-3">
             </div>
         </form>
     </section>
-    <div id="booksDiv">
 
+    <div id="booksDiv">
     </div>
+
     <section class="padding book hidden">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
             </div>
         </div>
     </section>
+
+
 </body>
 
 </html>

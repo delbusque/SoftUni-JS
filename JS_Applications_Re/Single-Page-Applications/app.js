@@ -1,19 +1,22 @@
 import registerPage from '/src/registerPage.js';
 import loginPage from '/src/loginPage.js';
+import logoutPage from '/src/logoutPage.js';
 import libraryPage from '/src/libraryPage.js';
 import booksPage from '/src/booksPage.js';
-
-
-
+import fetchBooks from '/src/fetchBooks.js';
+import authObj from '/src/auth.js'
 
 let navbarElement = document.querySelector('.navbar-nav');
 
 let pages = {
     register: registerPage,
     login: loginPage,
+    logout: logoutPage,
     library: libraryPage,
-    books: booksPage
+    books: booksPage,
+    fetchBooks
 }
+pages.fetchBooks();
 
 navbarElement.addEventListener('click', (e) => {
     e.preventDefault();

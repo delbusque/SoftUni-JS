@@ -6,7 +6,10 @@
     padding: 12px;
 }
 
-
-/*.book {
+.books {
     display: inline-block;
+}
+
+.card-link {
+    pointer-events: none;
 }
