@@ -1,4 +1,7 @@
-import fetchBooks from './fetchBooks.js';
+import fetchLibrary from './fetchLibrary.js';
+
+let libraryDivElement = document.getElementById('libraryDiv');
+
 
 let authSection = document.querySelector('.auth');
 let loginButton = document.querySelector('.btn');
@@ -8,20 +11,16 @@ let authorNameInput = document.getElementById('inputPassword2');
 
 function showPage() {
     authSection.classList.remove('hidden');
+    fetchLibrary();
+    libraryDivElement.classList.remove('hidden');
+    booksDivElement.classList.add('hidden');
     loginButton.value = 'Add book';
     bookNameInput.placeholder = 'Book';
     authorNameInput.placeholder = 'Author';
     authorNameInput.type = 'text';
-    booksDivElement.classList.add('hidden');
-    fetchBooks();
-    booksDivElement.classList.remove('hidden');
 }
 
-function hidePage() {
-    authSection.classList.add('hidden');
-}
 
 export default {
-    showPage,
-    hidePage
+    showPage
 };

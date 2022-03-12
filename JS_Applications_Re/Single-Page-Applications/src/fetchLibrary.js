@@ -1,26 +1,25 @@
 let baseUrl = `http://localhost:3030`
-let booksObj = {};
+let libraryObj = {};
 
 let bookDisplay = document.querySelector('.book');
-let booksDivElement = document.getElementById('booksDiv');
-let nestedBooksDivElement = document.createElement('div');
+let libraryDivElement = document.getElementById('libraryDiv');
+let nestedLibraryDivElement = document.createElement('div');
 
 function fetchLibrary() {
-    nestedBooksDivElement.innerHTML = "";
-    fetch(`${baseUrl}/jsonstore/collections/books`)
+    nestedLibraryDivElement.innerHTML = "";
+    fetch(`${baseUrl}/data/books`)
         .then(res => res.json())
         .then(books => {
-            Object.keys(books).forEach(b => {
-                fetch(`${baseUrl}/data/books/${b}`).then(res => res.json())
-                    .then(data => {
-                        booksObj[data.title] = data.author;
-                    })
-            });
+            if (books.code !== 404) {
+                books.forEach(b => {
+                    libraryObj[b.title] = b.author;
+                });
+            }
         }).catch(error => {
             console.log(error)
         })
 
-    for (const book of Object.entries(booksObj)) {
+    for (const book of Object.entries(libraryObj)) {
         let currentBook = bookDisplay.cloneNode(true);
         let bookNameElement = currentBook.querySelector('h5');
         let bookAuthorElement = currentBook.querySelector('h6');
@@ -31,9 +30,11 @@ function fetchLibrary() {
         bookAuthorElement.textContent = book[1];
         currentBook.classList.add('books');
         currentBook.classList.remove('hidden');
-        nestedBooksDivElement.appendChild(currentBook);
+        nestedLibraryDivElement.appendChild(currentBook);
+
     }
-    booksDivElement.appendChild(nestedBooksDivElement);
+    libraryDivElement.appendChild(nestedLibraryDivElement);
+    console.log(libraryDivElement)
 }
 
 

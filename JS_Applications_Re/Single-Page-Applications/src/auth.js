@@ -2,13 +2,19 @@ import registerPage from '/src/registerPage.js';
 import loginPage from '/src/loginPage.js';
 import libraryPage from '/src/libraryPage.js';
 import booksPage from '/src/booksPage.js';
+import fetchBooks from '/src/fetchBooks.js';
+import fetchLibrary from '/src/fetchLibrary.js';
 
 let pages = {
     register: registerPage,
     login: loginPage,
     library: libraryPage,
     books: booksPage,
+    fetchBooks,
+    fetchLibrary
 }
+
+
 
 let ids = [];
 
@@ -74,6 +80,7 @@ authForm.addEventListener('submit', (e) => {
             }
         })
     } else if (submitButtonElement.value == 'Add book') {
+
         let author = authData.get('password');
         let title = authData.get('email');
         let token = localStorage.getItem('auth_token');
@@ -90,11 +97,12 @@ authForm.addEventListener('submit', (e) => {
                     title
                 })
             }).then(res => res.json()).then(data => {
-                ids.push(data._id)
+                ids.push(data._id);
+                pages.fetchLibrary();
+                pages.library.showPage();
             })
         }
     }
-
 
     authForm.reset();
 
@@ -104,5 +112,7 @@ function getToken(token) {
     localStorage.removeItem('auth_token');
     localStorage.setItem('auth_token', token);
 }
+
+
 
 export default {};

@@ -2,15 +2,14 @@ import fetchBooks from './fetchBooks.js';
 
 let authSection = document.querySelector('.auth');
 let booksDivElement = document.getElementById('booksDiv');
+let libraryDivElement = document.getElementById('libraryDiv');
 
-let fetchMe = {
-    fetchBooks
-}
 
 function showPage() {
     authSection.classList.add('hidden');
-    fetchMe.fetchBooks();
+    fetchBooks();
     booksDivElement.classList.remove('hidden');
+    libraryDivElement.classList.add('hidden');
 }
 
 export default {
