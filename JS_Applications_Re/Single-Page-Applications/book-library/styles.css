@@ -6,6 +6,10 @@
     padding: 12px;
 }
 
+.padding24 {
+    padding: 24px;
+}
+
 .books {
     display: inline-block;
 }

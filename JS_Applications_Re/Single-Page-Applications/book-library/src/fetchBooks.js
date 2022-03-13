@@ -4,6 +4,7 @@ let booksObj = {};
 let bookDisplay = document.querySelector('.book');
 let booksDivElement = document.getElementById('booksDiv');
 let nestedBooksDivElement = document.createElement('div');
+nestedBooksDivElement.classList.add('books-div');
 
 function fetchBooks() {
     nestedBooksDivElement.innerHTML = "";

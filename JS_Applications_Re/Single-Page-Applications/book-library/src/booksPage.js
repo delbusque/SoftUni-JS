@@ -4,7 +4,6 @@ let authSection = document.querySelector('.auth');
 let booksDivElement = document.getElementById('booksDiv');
 let libraryDivElement = document.getElementById('libraryDiv');
 
-
 function showPage() {
     authSection.classList.add('hidden');
     fetchBooks();
