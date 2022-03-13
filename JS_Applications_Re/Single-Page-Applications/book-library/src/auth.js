@@ -87,25 +87,46 @@ authForm.addEventListener('submit', (e) => {
 
         if (author !== '' && title !== '') {
             fetch(`${baseUrl}/data/books`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Authorization': `${token}`,
-                },
-                body: JSON.stringify({
-                    author,
-                    title
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Authorization': `${token}`,
+                    },
+                    body: JSON.stringify({
+                        author,
+                        title
+                    })
+                }).then(res => res.json()).then(data => {
+                    ids.push(data._id);
+                    pages.fetchLibrary();
+                    pages.library.showPage();
                 })
-            }).then(res => res.json()).then(data => {
-                ids.push(data._id);
-                pages.fetchLibrary();
-                pages.library.showPage();
-            })
+                //async() => {
+                //    try {
+                //        let response = await fetch(`${baseUrl}/data/books`, {
+                //            method: 'POST',
+                //            headers: {
+                //                'Content-Type': 'application/json',
+                //                'X-Authorization': `${token}`,
+                //            },
+                //            body: JSON.stringify({
+                //                author,
+                //                title
+                //            })
+                //        });
+
+            //        let data = await response.json();
+            //        ids.push(data._id);
+            //        await pages.fetchLibrary();
+            //        await pages.library.showPage();
+
+            //    } catch (error) {
+            //        console.log(error)
+            //    }
+            //}
         }
     }
-
     authForm.reset();
-
 })
 
 function getToken(token) {
