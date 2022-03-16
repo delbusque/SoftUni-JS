@@ -1,0 +1,12 @@
+.root {
+    padding: 30px;
+}
+
+.card {
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.book-section {
+    display: inline-block
+}
