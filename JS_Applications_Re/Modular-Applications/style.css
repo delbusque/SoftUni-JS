@@ -1,0 +1,12 @@
+.hidden {
+    display: none;
+}
+
+.movie-list {
+    display: flex;
+    list-style: none;
+}
+
+.card {
+    margin: 10px;
+}
