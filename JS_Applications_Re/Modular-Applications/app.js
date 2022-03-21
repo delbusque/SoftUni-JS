@@ -1,9 +1,12 @@
-import { render } from './node_modules/lit-html/lit-html.js'
-import moviesTemplate from './src/templates/moviesTemplate.js'
-import moviesService from './src/services/moviesService.js'
+import page from './node_modules/page/page.mjs'
+import { movieView } from './src/views/movieVew.js'
+import { moviesView } from './src/views/moviesView.js'
+import { homeView } from './src/views/homeView.js'
+import { loginView } from './src/views/loginView.js'
 
-let rootElement = document.querySelector('.root');
+page('/', homeView)
+page('/movies', moviesView)
+page('/movies/:id', movieView)
+page('/login', loginView)
 
-moviesService.getAll().then(movies => {
-    render(moviesTemplate(movies), rootElement)
-})
+page.start()
