@@ -5,8 +5,11 @@ import { homeView } from './src/views/homeView.js'
 import { loginView } from './src/views/loginView.js'
 import { registerView } from './src/views/registerView.js'
 import { renderMiddleware } from './src/middlewares/renderMiddleware.js'
+import { authMiddleware } from './src/middlewares/authMiddleware.js'
 
+page(authMiddleware)
 page(renderMiddleware)
+
 page('/', homeView)
 page('/home', homeView)
 page('/movies', moviesView)

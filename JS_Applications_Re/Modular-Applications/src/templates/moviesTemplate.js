@@ -4,7 +4,6 @@ import movieCard from './movieCardTemplate.js';
 export default (movies) => html `
 <ul class="movie-list">
 ${movies.map(movie => {
-    movie.isDisabled = false;
     return html`<li>${movieCard(movie)}</li>`
     })}
     </ul>`

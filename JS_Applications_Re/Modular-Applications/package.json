@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "start": "lite-server"
+        "start": "lite-server",
+        "server": "cd ./server && node ./server.js"
     },
     "keywords": [],
     "author": "",
