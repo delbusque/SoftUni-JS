@@ -1,17 +1,17 @@
-import loginTemplate from '../templates/loginTemplate.js'
+import registerTemplate from '../templates/registerTemplate.js'
 import * as authService from '../services/authService.js'
 
-export function loginView(ctx) {
+export function registerView(ctx) {
 
-    const onLoginSubmit = (e) => {
+    const onRegisterSubmit = (e) => {
         e.preventDefault();
         let formData = new FormData(e.currentTarget)
         let email = formData.get('email').trim()
         let password = formData.get('password').trim()
-        authService.login(email, password).then(() => {
+        authService.register(email, password).then(() => {
             ctx.page.redirect('/movies')
         })
     };
 
-    ctx.render(loginTemplate(onLoginSubmit));
+    ctx.render(registerTemplate(onRegisterSubmit));
 }

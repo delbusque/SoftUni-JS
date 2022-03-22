@@ -1,8 +1,9 @@
 function requester(method, url, data) {
     let options = {};
     if (method != 'GET') {
-        method,
+
         options = {
+            method,
             headers: {
                 'Content-Type': 'application/json'
             },

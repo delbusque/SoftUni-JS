@@ -11,7 +11,7 @@ export default (onSubmit) => html `
     <input type="password" class="form-control" id="login-password" name="password" placeholder="Password">
   </div>
   <div class="col-auto">
-    <input type="submit" class="btn btn-primary mb-3" value="Login">
+    <input type="submit" class="btn btn-primary mb-3" value="Register">
   </div>
 </form>
 `

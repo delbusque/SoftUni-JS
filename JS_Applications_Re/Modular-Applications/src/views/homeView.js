@@ -1,3 +1,7 @@
-export function homeView() {
-    console.log(123);
+import homeTemplate from "../templates/homeTemplate.js";
+
+export function homeView(ctx) {
+
+    ctx.render(homeTemplate());
+
 }
