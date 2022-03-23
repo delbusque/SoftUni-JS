@@ -6,6 +6,7 @@ import { loginView } from './src/views/loginView.js'
 import { registerView } from './src/views/registerView.js'
 import { renderMiddleware } from './src/middlewares/renderMiddleware.js'
 import { authMiddleware } from './src/middlewares/authMiddleware.js'
+import { addMoviewView } from './src/views/addMovieView.js'
 
 page(authMiddleware)
 page(renderMiddleware)
@@ -13,6 +14,7 @@ page(renderMiddleware)
 page('/', homeView)
 page('/home', homeView)
 page('/movies', moviesView)
+page('/add-movie', addMoviewView)
 page('/movies/:id', movieView)
 page('/login', loginView)
 page('/register', registerView)

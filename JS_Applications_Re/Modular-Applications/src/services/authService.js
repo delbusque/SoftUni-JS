@@ -10,13 +10,18 @@ function saveData({ _id, email, accessToken }) {
 export function getData() {
     let _id = localStorage.getItem('_id');
     let email = localStorage.getItem('email');
-    let accessToken = localStorage.getItem('accessToken');
+    let accessToken = getToken();
 
     return {
         _id,
         email,
         accessToken,
     }
+}
+
+export function getToken() {
+    let accessToken = localStorage.getItem('accessToken');
+    return accessToken;
 }
 
 export function login(email, password) {

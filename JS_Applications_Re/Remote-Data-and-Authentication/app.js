@@ -39,6 +39,7 @@ addMovieForm.addEventListener('submit', (e) => {
     let movieData = new FormData(e.currentTarget);
     let title = movieData.get('title');
     let description = movieData.get('description');
+    let imageUrl = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSBhD8EMwRYbyFGgD-z_X_bj-_-I_Ow-R8L9mCkGdHqs0Qvg9QE'
 
     fetch(`${baseUrl}/data/movies`, {
             method: 'POST',
@@ -48,7 +49,8 @@ addMovieForm.addEventListener('submit', (e) => {
             },
             body: JSON.stringify({
                 title,
-                description
+                description,
+                imageUrl
             })
         }).then(res => {
             if (res.ok) {

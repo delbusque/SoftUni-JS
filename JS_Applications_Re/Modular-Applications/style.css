@@ -4,6 +4,7 @@
 
 .movie-list {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
 }
 
@@ -17,4 +18,9 @@
 
 .row {
     margin: 2px;
+}
+
+.add-form {
+    width: 462px;
+    margin: 15px;
 }
