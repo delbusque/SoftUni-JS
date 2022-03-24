@@ -1,6 +1,6 @@
 import page from './node_modules/page/page.mjs'
 import { movieView } from './src/views/movieVew.js'
-import { moviesView } from './src/views/moviesView.js'
+import { moviesView, myMoviesView } from './src/views/moviesView.js'
 import { homeView } from './src/views/homeView.js'
 import { loginView } from './src/views/loginView.js'
 import { registerView } from './src/views/registerView.js'
@@ -13,9 +13,14 @@ page(renderMiddleware)
 
 page('/', homeView)
 page('/home', homeView)
-page('/movies', moviesView)
-page('/add-movie', addMoviewView)
+
+page('/my-movies/:id/edit', movieView)
+page('/my-movies', myMoviesView)
+page('/movies/add', addMoviewView)
+
 page('/movies/:id', movieView)
+page('/movies', moviesView)
+
 page('/login', loginView)
 page('/register', registerView)
 

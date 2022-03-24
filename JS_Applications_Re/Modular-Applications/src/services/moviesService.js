@@ -8,7 +8,10 @@ function getAll() {
 function getOne(id) {
     return fetch(`${api.baseUrl}/data/movies/${id}`).then(res => res.json());
 }
+export const getMyMovies = (ownerId) => request.get(`${api.movies}?where=_ownerId%3D"${ownerId}"`)
+
 export const create = (title, img, description) => request.post(`${api.baseUrl}/data/movies`, { title, img, description });
+
 
 export default {
     getAll,

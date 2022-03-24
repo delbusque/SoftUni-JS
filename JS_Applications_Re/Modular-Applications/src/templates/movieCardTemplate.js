@@ -8,5 +8,5 @@ export default (movie) => html `
     <p class="card-text hidden">${movie.description}</p>
     <a href="/movies/${movie._id}" class="btn btn-primary">Show details</a>
   </div>
-</div>
+
 `

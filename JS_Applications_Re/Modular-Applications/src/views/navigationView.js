@@ -11,7 +11,7 @@ const guestButtons = () => html `
 
 const privateButtons = () => html `
 <a class="nav-link" href="/my-movies">My Movies</a>
-<a class="nav-link" href="/add-movie">Add Movie</a>
+<a class="nav-link" href="/movies/add">Add Movie</a>
 <a class="nav-link" href="/logout">Logout</a>
 
 `

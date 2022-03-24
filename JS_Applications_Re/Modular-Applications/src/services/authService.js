@@ -24,6 +24,10 @@ export function getToken() {
     return accessToken;
 }
 
+//export function logout() {
+//    return request.get(api.logout);
+//}
+
 export function login(email, password) {
     return request.post(api.login, { email, password })
         .then(data => {

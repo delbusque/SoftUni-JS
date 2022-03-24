@@ -5,20 +5,33 @@ function requester(method, url, data) {
     let token = getToken();
 
     if (method != 'GET') {
-
         options = {
             method,
             headers: {
                 'Content-Type': 'application/json',
-                ...(token && { 'X-Authorization': token })
+                //...(token && { 'X-Authorization': token })
             },
             body: JSON.stringify(data)
         }
     }
 
-    // if (token) {
-    //     options.headers['X-Authorization'] = token;
-    // }
+    //if (method == 'GET' && token) {
+    //    options = {
+    //        method,
+    //        headers: {
+    //            'Content-Type': 'application/json',
+    //            'X-Authorization': token
+    //        },
+    //        body: JSON.stringify(data)
+    //    }
+    //}
+
+    if (token) {
+        options.headers = {
+            ...(options.headers),
+            'X-Authorization': token
+        }
+    }
 
     return fetch(url, options).then(res => res.json())
 }

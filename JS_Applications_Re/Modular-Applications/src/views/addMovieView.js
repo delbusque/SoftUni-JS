@@ -29,10 +29,8 @@ export function addMoviewView(ctx) {
         let description = formData.get('description');
         let imageUrl = formData.get('img');
 
-
-
         create(title, imageUrl, description).then(data => {
-            console.log('Created');
+            ctx.page.redirect('/movies')
         })
 
     }
