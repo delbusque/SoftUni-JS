@@ -1,7 +1,8 @@
 import page from './node_modules/page/page.mjs'
+import { homeView } from './src/views/homeView.js'
+
 import { movieView } from './src/views/movieVew.js'
 import { moviesView, myMoviesView } from './src/views/moviesView.js'
-import { homeView } from './src/views/homeView.js'
 import { loginView } from './src/views/loginView.js'
 import { registerView } from './src/views/registerView.js'
 import { renderMiddleware } from './src/middlewares/renderMiddleware.js'

@@ -1,11 +1,10 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
-//import movieTemplate from '../templates/movieTemplate.js'
-import moviesService from '../services/moviesService.js'
+import * as moviesService from '../services/moviesService.js'
 
 const privateButtons = (_id) => html `
 <div>
 <a href="/my-movies/${_id}/edit" class="up-down-edit btn btn-success">Edit</a>
-<a href="/my-movies/${_id}/delete" class="up-down-edit btn btn-danger">Delete</a>
+<a class="up-down-edit btn btn-danger">Delete</a>
 </div>
 `
 const publicButtons = (_id) => html `
