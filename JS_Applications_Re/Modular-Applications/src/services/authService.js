@@ -7,6 +7,13 @@ function saveData({ _id, email, accessToken }) {
     localStorage.setItem('accessToken', accessToken);
 }
 
+function deleteData() {
+    localStorage.removeItem('_id')
+    localStorage.removeItem('email');
+    localStorage.removeItem('accessToken');
+}
+
+
 export function getData() {
     let _id = localStorage.getItem('_id');
     let email = localStorage.getItem('email');
@@ -36,6 +43,12 @@ export function register(email, password) {
         .then(data => {
             saveData(data)
         })
+}
+
+export function logout() {
+    return request.get(api.logout).then(() => {
+        deleteData()
+    })
 }
 
 export function isAuthenticated() {

@@ -33,7 +33,12 @@ function requester(method, url, data) {
         }
     }
 
-    return fetch(url, options).then(res => res.json())
+    return fetch(url, options).then(res => {
+        if (res.url.endsWith('logout')) {
+            return res;
+        }
+        return res.json()
+    })
 }
 
 export const get = requester.bind(null, 'GET');

@@ -9,11 +9,11 @@ export function addMovieView(ctx) {
         let title = formData.get('title');
         let description = formData.get('description');
         let imageUrl = formData.get('img');
-
-        create(title, imageUrl, description).then(() => {
-            ctx.page.redirect('/movies')
-        })
-
+        if (title) {
+            create(title, imageUrl, description).then(() => {
+                ctx.page.redirect('/movies')
+            })
+        }
     }
     ctx.render(movieFormTemplate(onSubmit))
 }

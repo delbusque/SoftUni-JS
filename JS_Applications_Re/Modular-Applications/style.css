@@ -32,3 +32,11 @@
 .div-margin {
     margin: 10px;
 }
+
+.d-flex {
+    margin-left: 150px;
+}
+
+#search-input {
+    width: 400px;
+}

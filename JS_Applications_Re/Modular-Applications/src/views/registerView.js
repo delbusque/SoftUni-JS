@@ -23,9 +23,11 @@ export function registerView(ctx) {
         let formData = new FormData(e.currentTarget)
         let email = formData.get('email').trim()
         let password = formData.get('password').trim()
-        authService.register(email, password).then(() => {
-            ctx.page.redirect('/movies')
-        })
+        if (email && password) {
+            authService.register(email, password).then(() => {
+                ctx.page.redirect('/movies')
+            })
+        }
     };
 
     ctx.render(registerTemplate(onRegisterSubmit));

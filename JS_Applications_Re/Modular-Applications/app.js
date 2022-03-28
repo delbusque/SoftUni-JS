@@ -10,9 +10,11 @@ import { authMiddleware } from './src/middlewares/authMiddleware.js'
 import { addMovieView } from './src/views/addMovieView.js'
 import { editMovieView } from './src/views/editMovieView.js'
 import { deleteMovieView } from './src/views/deleteMovieView.js'
+import { querystringMiddleware } from './src/middlewares/querystringMiddleware.js'
 
 page(authMiddleware)
 page(renderMiddleware)
+page(querystringMiddleware)
 
 page('/', homeView)
 page('/home', homeView)

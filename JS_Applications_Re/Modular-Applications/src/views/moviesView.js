@@ -11,9 +11,16 @@ ${movies.map(movie => {
     </ul>`
 
 export function moviesView(ctx) {
-    moviesService.getAll().then(movies => {
-        ctx.render(moviesTemplate(movies))
-    })
+    if(ctx.qstring.search){
+moviesService.search(ctx.qstring.search).then(movies => {
+    ctx.render(moviesTemplate(movies))})
+    }else{
+        moviesService.getAll().then(movies => {
+            ctx.render(moviesTemplate(movies))
+        })
+    }
+
+
 }
 
 export function myMoviesView(ctx) {
