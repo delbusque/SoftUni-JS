@@ -1,0 +1,25 @@
+{
+    "name": "car-tube",
+    "version": "1.0.0",
+    "description": "Car Tube Single Page Application",
+    "main": "index.html",
+    "scripts": {
+        "test": "mocha tests/e2e.test.js",
+        "start": "http-server -a localhost -p 3000 -P http://localhost:3000?",
+        "server": "node ./server/server.js",
+        "lite": "lite-server"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^4.3.6",
+        "http-server": "^14.1.0",
+        "lit-html": "^2.2.1",
+        "mocha": "^9.2.2",
+        "page": "^1.11.6",
+        "playwright-chromium": "^1.20.1"
+    },
+    "devDependencies": {
+        "lite-server": "^2.6.1"
+    }
+}
