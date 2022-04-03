@@ -1,4 +1,4 @@
-import * as authService from '../services/authService.js'
+import * as authService from '../services/authService.js';
 
 function request(method, url, data) {
     let options = {};
@@ -27,7 +27,7 @@ function request(method, url, data) {
             return res;
         }
         return res.json()
-    })
+    });
 }
 
 export const get = request.bind(null, 'GET');

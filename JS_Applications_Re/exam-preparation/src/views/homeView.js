@@ -1,4 +1,4 @@
-import { html } from '../../node_modules/lit-html/lit-html.js'
+import { html } from '../../node_modules/lit-html/lit-html.js';
 
 
 const homeTemplate = () => html `
@@ -13,8 +13,8 @@ const homeTemplate = () => html `
                 </div>
             </div>
         </section>
-`
+`;
 
 export const renderHome = (ctx) => {
     ctx.render(homeTemplate())
-}
+};

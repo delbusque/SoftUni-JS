@@ -1,4 +1,4 @@
-import * as authService from '../services/authService.js'
+import * as authService from '../services/authService.js';
 
 export function authMiddleware(ctx, next) {
     let user = authService.getUser();
@@ -8,4 +8,4 @@ export function authMiddleware(ctx, next) {
     }
 
     next();
-}
+};

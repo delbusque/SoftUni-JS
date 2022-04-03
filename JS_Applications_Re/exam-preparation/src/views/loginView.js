@@ -1,5 +1,5 @@
-import { html } from '../../node_modules/lit-html/lit-html.js'
-import * as authService from '../services/authService.js'
+import { html } from '../../node_modules/lit-html/lit-html.js';
+import * as authService from '../services/authService.js';
 
 const loginTemplate = (onSubmit) => html `
 <!-- Login Page -->
@@ -24,7 +24,7 @@ const loginTemplate = (onSubmit) => html `
                 </div>
             </div>
         </section>
-`
+`;
 
 export function renderLogin(ctx) {
     const onSubmit = (e) => {
@@ -37,7 +37,7 @@ export function renderLogin(ctx) {
         authService.login(username, password).then(() => {
             ctx.page.redirect('/listing')
         })
-    }
+    };
 
-    ctx.render(loginTemplate(onSubmit))
-}
+    ctx.render(loginTemplate(onSubmit));
+};

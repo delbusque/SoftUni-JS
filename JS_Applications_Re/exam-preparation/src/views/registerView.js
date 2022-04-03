@@ -1,5 +1,5 @@
-import { html } from '../../node_modules/lit-html/lit-html.js'
-import * as authService from '../services/authService.js'
+import { html } from '../../node_modules/lit-html/lit-html.js';
+import * as authService from '../services/authService.js';
 
 const registerTemplate = (onSubmit) => html `
         <!-- Register Page -->
@@ -29,7 +29,7 @@ const registerTemplate = (onSubmit) => html `
                 </div>
             </div>
         </section>
-`
+`;
 
 export function renderRegister(ctx) {
     const onSubmit = (e) => {
@@ -45,5 +45,5 @@ export function renderRegister(ctx) {
         })
     }
 
-    ctx.render(registerTemplate(onSubmit))
+    ctx.render(registerTemplate(onSubmit));
 }
