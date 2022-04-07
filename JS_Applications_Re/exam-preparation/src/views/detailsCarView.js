@@ -25,7 +25,9 @@ const detailsCarTemplate = (car, showButtons) => html `
 
                 <p class="description-para">${car.description}</p>
 
-                ${showButtons && privateButtons(car._id)}
+                ${showButtons && privateButtons(car._id)} 
+               <!--$ {showButtons ? privateButtons(car._id) : nothing} -->
+
             </div>
         </section>
 `;
