@@ -1,5 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import * as authService from '../services/authService.js';
+import { checkCarForm } from '../helpers.js';
 
 const registerTemplate = (onSubmit) => html `
         <!-- Register Page -->
@@ -35,15 +36,22 @@ export function renderRegister(ctx) {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        let formData = new FormData(e.currentTarget);
-        let username = formData.get('username');
-        let password = formData.get('password');
-        let repeatPass = formData.get('repeatPass');
+        let car = Object.fromEntries(new FormData(e.currentTarget));
+        let username = car.username;
+        let password = car.password;
+        let repeatPass = car['repeatPass'];
 
+        if (!checkCarForm(car)) {
+            alert('Please fill all the empty fields !')
+            return;
+        }
+        if (password !== repeatPass) {
+            alert('Passwords do not match !')
+            return;
+        }
         authService.register(username, password).then(() => {
             ctx.page.redirect('/listing')
         })
-    }
 
-    ctx.render(registerTemplate(onSubmit));
-}
+        ctx.render(registerTemplate(onSubmit));
+    }
