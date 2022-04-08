@@ -1,5 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import * as authService from '../services/authService.js';
+import { checkCarForm } from '../helpers.js';
 
 const loginTemplate = (onSubmit) => html `
 <!-- Login Page -->
@@ -19,7 +20,7 @@ const loginTemplate = (onSubmit) => html `
                 </form>
                 <div class="signin">
                     <p>Dont have an account?
-                        <a href="#">Sign up</a>.
+                        <a href="/register">Sign up</a>.
                     </p>
                 </div>
             </div>
@@ -30,11 +31,20 @@ export function renderLogin(ctx) {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        let formData = new FormData(e.currentTarget);
-        let username = formData.get('username');
-        let password = formData.get('password');
+        let car = Object.fromEntries(new FormData(e.currentTarget));
+        let username = car.username;
+        let password = car.password;
 
-        authService.login(username, password).then(() => {
+        if (!checkBookForm(car)) {
+            return;
+        }
+
+        authService.login(username, password).then((user) => {
+            if (user.code == 403) {
+                localStorage.removeItem('user');
+                alert(`Login or password don't match`);
+                return;
+            }
             ctx.page.redirect('/listing')
         })
     };
