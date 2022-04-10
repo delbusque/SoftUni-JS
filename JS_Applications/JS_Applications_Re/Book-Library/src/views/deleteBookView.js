@@ -9,7 +9,7 @@ export const renderDeleteBook = (ctx) => {
 
             throw 'Wrong book owner';
         }
-        if (confirm(`Dou your really want to delete ${book.title}`)) {
+        if (confirm(`Do you really want to delete ${book.title} ?`)) {
             return bookService.del(bookId);
         } else {
             throw 'Abort deletion'

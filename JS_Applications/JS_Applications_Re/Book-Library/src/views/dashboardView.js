@@ -20,7 +20,7 @@ const dashboardTemplate = (books = []) => html `
 `;
 
 export const renderDashboard = (ctx) => {
-    bookService.getAll().then(books => {
+    bookService.getAll().then(books => {        
         ctx.render(dashboardTemplate(books))
     })
 };
