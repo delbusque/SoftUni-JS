@@ -17,6 +17,8 @@ readableStream.on('end', () => {
     writableStream.end()
 })
 
+// readableStream.pipe(writableStream);
+
 const gzibStream = zlib.createGzip();
 const writableZipStream = fs.createWriteStream('./zipout.gzip')
 
