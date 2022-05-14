@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const catsMiddleware = require('../middlewares/catsMiddleware.js')
 
+router.get('/add-breed', (req, res) => {
+    res.render('addBreed')
+})
+
 router.get('/mucky', catsMiddleware, (req, res) => {
     res.header({
         'Content-Type': 'text/html'
