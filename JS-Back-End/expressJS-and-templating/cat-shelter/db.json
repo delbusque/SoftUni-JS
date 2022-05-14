@@ -1,0 +1,21 @@
+{
+    "breeds": [
+        "Persian",
+        "Angor",
+        "Bolivian"
+    ],
+    "cats": [
+        {
+            "name": "Sisi",
+            "breed": "Tiger",
+            "description": "Very lovely kitty...",
+            "img": ""
+        },
+        {
+            "name": "Pufi",
+            "breed": "Tiger",
+            "description": "Very lovely kitty...",
+            "img": ""
+        }
+    ]
+}
