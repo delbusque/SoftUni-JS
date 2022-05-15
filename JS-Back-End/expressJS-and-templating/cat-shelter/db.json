@@ -4,18 +4,23 @@
         "Angor",
         "Bolivian"
     ],
-    "cats": [
-        {
-            "name": "Sisi",
+    "cats": [{
+            "name": "Sisilia",
             "breed": "Tiger",
             "description": "Very lovely kitty...",
-            "img": ""
+            "img": "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&w=1000&q=80"
         },
         {
-            "name": "Pufi",
+            "name": "Pretty Kitty",
+            "breed": "Bombay Cat",
+            "description": "Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.",
+            "img": "https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg"
+        },
+        {
+            "name": "Sisil",
             "breed": "Tiger",
             "description": "Very lovely kitty...",
-            "img": ""
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKKq8gDNIuHSujoWZSaTdJSiw8GdiU5T35kQ&usqp=CAU"
         }
     ]
 }

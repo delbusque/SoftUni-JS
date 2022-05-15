@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+
 const { engine } = require('express-handlebars');
 const catController = require('./controllers/catController.js')
 
@@ -13,7 +15,13 @@ app.use('/cats', catController)
 
 
 app.get('/', (req, res) => {
-    res.render('home')
+    fs.readFile('./db.json', 'utf8', (err, data) => {
+        let catData = JSON.parse(data);
+
+        res.render('home', {
+            catData
+        })
+    })
 })
 
 
