@@ -1,4 +1,6 @@
 const fs = require('fs')
+const fsPromises = require('fs/promises');
+const db = require('../db.json');
 
 const getCat = (catName, view, res) => {
     fs.readFile('./db.json', 'utf8', (err, data) => {
@@ -11,6 +13,25 @@ const getCat = (catName, view, res) => {
     })
 }
 
-module.exports = {
-    getCat
+const addCat = (data) => {
+    db.cats.push(data);
+    let result = JSON.stringify(db, '', 2);
+
+    return fsPromises.writeFile('./db.json', result)
 }
+
+const addBreed = (data) => {
+    db.breeds.push(data.breed)
+    let result = JSON.stringify(db, '', 2);
+
+    return fsPromises.writeFile('./db.json', result)
+
+}
+
+const dbService = {
+    getCat,
+    addCat,
+    addBreed
+}
+
+module.exports = dbService;

@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const dbService = require('../services/dbService.js')
+const formidable = require('formidable');
+const dbService = require('../services/dbService.js');
+const db = require('../db.json');
+
 
 router.get('/add-breed', (req, res) => {
     res.render('addBreed')
@@ -28,6 +31,43 @@ router.get('/edit-cat/:catName', (req, res) => {
             cat,
             breeds
         })
+    })
+})
+
+router.post('/add-cat', (req, res) => {
+    let form = new formidable.IncomingForm();
+    form.parse(req, (err, fields, files) => {
+
+        dbService.addCat(fields)
+            .then(() => {
+                res.writeHead(302, {
+                    'Location': '/'
+                })
+                res.end()
+            });
+    })
+})
+
+router.post('/add-breed', (req, res) => {
+    let form = new formidable.IncomingForm();
+    form.parse(req, (err, fields, files) => {
+
+        if (!db.breeds.find(b => b == fields.breed)) {
+            dbService.addBreed(fields)
+                .then(() => {
+                    res.writeHead(302, {
+                        'Location': '/'
+                    })
+                    res.end();
+                });
+        } else {
+            res.writeHead(302, {
+                'Location': '/'
+            })
+            res.end();
+        }
+
+
     })
 })
 
