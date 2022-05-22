@@ -1,6 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 
+let ind = 1;
+
 let app = http.createServer((req, res) => {
 
     switch (req.url) {
