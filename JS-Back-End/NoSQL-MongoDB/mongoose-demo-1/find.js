@@ -32,5 +32,5 @@ async function getPerson() {
 getPerson()
 
 
-Person.findById('628f3457b79a7c446b441464').then(person => console.log(person));
+Person.findById('62921dd498c39172387ac811').populate('pet').then(person => console.log(person));
 

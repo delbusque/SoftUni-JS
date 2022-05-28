@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Pet = require('./Pet')
 
 const personShema = new mongoose.Schema({
     name: {
@@ -30,15 +31,15 @@ const personShema = new mongoose.Schema({
         type: [String],
         validate: {
             validator: function (arr) {
-                return arr.length >= 3;
+                return arr.length >= 1;
             },
             message: 'Locations should be more than two !'
         }
 
     },
     pet: {
-        type: String,
-        required: false
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pet'
     }
 
 });
