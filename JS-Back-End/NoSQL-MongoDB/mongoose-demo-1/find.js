@@ -6,7 +6,7 @@ const Person = require('./models/Person');
 
 dbInit();
 
-Person.find({ age: 22 }).then(people => console.log(people));
+Person.find({ age: 30 }).then(people => console.log(people));
 
 
 
@@ -23,4 +23,14 @@ async function getPeople() {
 getPeople();
 
 
+async function getPerson() {
+    let person = await Person.findOne({ sport: 'Soccer' });
+
+    console.log(person);
+}
+
+getPerson()
+
+
+Person.findById('628f3457b79a7c446b441464').then(person => console.log(person));
 

@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const dbInit = require('./config/dbConfig');
 const Person = require('./models/Person');
 

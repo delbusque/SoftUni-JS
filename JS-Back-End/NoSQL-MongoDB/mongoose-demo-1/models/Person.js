@@ -35,6 +35,10 @@ const personShema = new mongoose.Schema({
             message: 'Locations should be more than two !'
         }
 
+    },
+    pet: {
+        type: String,
+        required: false
     }
 
 });
