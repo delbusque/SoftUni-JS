@@ -1,4 +1,5 @@
 class Person {
+
     constructor(firstName, lastName, age, email) {
         this.firstName = firstName;
         this.lastName = lastName;
