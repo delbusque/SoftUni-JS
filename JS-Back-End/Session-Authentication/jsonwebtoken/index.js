@@ -4,10 +4,14 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const uniqid = require('uniqid');
+const { engine } = require('express-handlebars');
 
 const secret = 'mysecretsecret';
 
 const app = express();
+
+app.engine('hbs', engine({ extname: 'hbs' }));
+app.set('view engine', 'hbs');
 
 app.use(cookieParser());
 app.use(session({
@@ -16,10 +20,11 @@ app.use(session({
     secret: 'jknfvkjbsdkvbdhvbsdhfzbh34q8t7'
 }))
 
+
+
 app.get('/', (req, res) => {
-    fs.readFile('./home.html', { encoding: 'utf-8' })
-        .then(home => res.send(home));
-});
+    res.render('home')
+})
 
 app.get('/create/:password', (req, res) => {
     let payload = {
@@ -31,7 +36,7 @@ app.get('/create/:password', (req, res) => {
     let token = jwt.sign(payload, secret, options);
 
     res.cookie('jwt', token);
-    res.send(token);
+    res.render('demo', { message: "jtw created" });
 });
 
 app.get('/verify', (req, res) => {
@@ -42,7 +47,8 @@ app.get('/verify', (req, res) => {
             return res.status(404).send(err);
         }
 
-        res.send(payload);
+        //res.send(payload)
+        res.render('demo', { message: JSON.stringify(payload) });
     })
 
 })
