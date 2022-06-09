@@ -1,0 +1,22 @@
+.site-wrapper {
+    width: 700px;
+    margin: auto;
+}
+
+.auth-form {
+    width: 700px;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+
+}
+
+a {
+    text-decoration: none;
+    color: rgb(13, 3, 13);
+    display: flexbox;
+    padding: 10px;
+}
