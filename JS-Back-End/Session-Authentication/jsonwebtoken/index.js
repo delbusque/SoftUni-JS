@@ -19,7 +19,6 @@ app.use(cookieParser());
 
 const userSessions = {};
 
-
 app.get('/', async (req, res) => {
 
     if (req.cookies['jtoken']) {
@@ -28,7 +27,6 @@ app.get('/', async (req, res) => {
         res.render('home', { email: decodedToken.email })
     } else {
         res.render('home', { email: 'guest' })
-
     }
 
 });
@@ -95,8 +93,6 @@ app.get('/profile', async (req, res) => {
     }
 
 })
-
-
 
 
 app.listen(5000, console.log.bind(console, 'App is running on http://localhost:5000 ...'));
