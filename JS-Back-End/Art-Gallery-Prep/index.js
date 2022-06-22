@@ -1,0 +1,19 @@
+const express = require('express');
+const hbs = require('express-handlebars');
+
+const { PORT } = require('./config/env');
+const routes = require('./routes');
+const { dbInit } = require('./config/db');
+
+const app = express();
+
+app.engine('hbs', hbs.engine({ extname: 'hbs' }));
+app.set('view engine', 'hbs');
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(routes);
+
+dbInit();
+app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
