@@ -1,0 +1,29 @@
+# Tasks
+
+## Initial setup
+1. Initialize project
+2. Install initial dependencies / nodemon, express, express-handlebars /
+3. Adding resourses
+4. Express config
+    * body parser
+    * static path
+5. Configer Express-Handlebars
+6. Add router
+7. Add home controller
+8. Add layout
+9. Add home view/template
+10. fix public assets and paths
+
+## Database setup
+1. Install mongoose
+2. Configure mongoose
+3. Create User model
+
+### Authentication
+1. Add auth controller
+    * add controller routes
+2. Add login and register page
+    * modify hrefs in  navigation
+    *modify names in forms
+3. Add POST login and register actions
+
