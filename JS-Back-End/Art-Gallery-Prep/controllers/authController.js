@@ -9,13 +9,20 @@ router.get('/login', isGuest, (req, res) => {
 });
 
 router.post('/login', isGuest, async (req, res) => {
-    const { username, password } = req.body;
 
-    const user = await authService.login(username, password);
-    const token = await authService.createToken(user);
+    try {
+        const { username, password } = req.body;
 
-    res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
-    res.redirect('/');
+        const user = await authService.login(username, password);
+        const token = await authService.createToken(user);
+
+        res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
+        res.redirect('/');
+    } catch (error) {
+        return res.render('auth/login', { error: getErrorMessage(error) });
+
+    }
+
 
 })
 
@@ -38,7 +45,7 @@ router.post('/register', isGuest, async (req, res) => {
         res.redirect('/');
 
     } catch (error) {
-        return res.render('auth/register', { error: getErrorMessage(error) })
+        return res.render('auth/register', { error: getErrorMessage(error) });
     }
 
 });
