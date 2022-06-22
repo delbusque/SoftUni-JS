@@ -2,7 +2,7 @@
 
 ## Initial setup
 1. Initialize project
-2. Install initial dependencies / nodemon, express, express-handlebars /
+2. Install initial dependencies / nodemon, express, express-handlebars, bcrypt, jsonwebtoken, cookie-parser /
 3. Adding resourses
 4. Express config
     * body parser
@@ -19,11 +19,28 @@
 2. Configure mongoose
 3. Create User model
 
-### Authentication
+## Authentication
 1. Add auth controller
     * add controller routes
 2. Add login and register page
     * modify hrefs in  navigation
     *modify names in forms
 3. Add POST login and register actions
+4. Create user
+5. Hash password
+6. Login action
+7. Login service method / find user, validate password /
+8. Generate jwt token
+    * Add secret to global constants
 
+## Authorization
+1. Auth middleware
+2. Navigation links
+3. Route guards
+
+
+## Notifications
+1. Add notification elemnt to layout
+
+## Error Handling
+1. Add error mapper
