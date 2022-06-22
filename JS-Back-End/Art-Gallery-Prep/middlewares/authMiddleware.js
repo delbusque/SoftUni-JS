@@ -12,7 +12,8 @@ exports.auth = (req, res, next) => {
             if (err) {
                 res.clearCookie(COOKIE_SESSION_NAME);
 
-                return next(err);
+                // return next(err);
+                res.redirect('/auth/login')
             }
 
             req.user = decodedToken;
@@ -33,4 +34,13 @@ exports.isAuth = (req, res, next) => {
     }
 
     next();
-}
+};
+
+exports.isGuest = (req, res, next) => {
+
+    if (req.user) {
+        return res.redirect('/');
+    }
+
+    next();
+};

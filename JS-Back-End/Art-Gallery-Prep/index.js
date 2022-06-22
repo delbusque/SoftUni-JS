@@ -6,7 +6,8 @@ const { PORT } = require('./config/env');
 const routes = require('./routes');
 const { dbInit } = require('./config/db');
 
-const { auth } = require('.//middlewares/authMiddleware.js')
+const { auth } = require('.//middlewares/authMiddleware.js');
+const { errorHandler } = require('./middlewares/errorHandlerMiddleware.js');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 app.use(cookieParser());
 app.use(auth);
 app.use(routes);
+app.use(errorHandler);
 
 dbInit();
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
