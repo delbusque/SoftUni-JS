@@ -22,9 +22,7 @@ router.post('/login', isGuest, async (req, res) => {
         return res.render('auth/login', { error: getErrorMessage(error) });
 
     }
-
-
-})
+});
 
 router.get('/register', isGuest, (req, res) => {
     res.render('auth/register');
@@ -47,7 +45,6 @@ router.post('/register', isGuest, async (req, res) => {
     } catch (error) {
         return res.render('auth/register', { error: getErrorMessage(error) });
     }
-
 });
 
 router.get('/logout', isAuth, (req, res) => {
