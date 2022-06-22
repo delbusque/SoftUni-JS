@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authService = require('../services/authService.js');
 const { COOKIE_SESSION_NAME } = require('../constants.js');
+const { isAuth } = require('../middlewares/authMiddleware.js');
 
 router.get('/login', (req, res) => {
     res.render('auth/login');
@@ -12,7 +13,7 @@ router.post('/login', async (req, res) => {
     const user = await authService.login(username, password);
     const token = await authService.createToken(user);
 
-    res.cookie(COOKIE_SESSION_NAME, token);
+    res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
     res.redirect('/');
 
 })
@@ -32,7 +33,7 @@ router.post('/register', async (req, res) => {
         const createdUser = await authService.create({ username, password, address });
         const token = await authService.createToken(createdUser);
 
-        res.cookie(COOKIE_SESSION_NAME, token);
+        res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
         res.redirect('/');
 
     } catch (error) {
@@ -42,7 +43,7 @@ router.post('/register', async (req, res) => {
 
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie(COOKIE_SESSION_NAME);
     res.redirect('/');
 })

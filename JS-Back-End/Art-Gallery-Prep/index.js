@@ -1,9 +1,12 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const cookieParser = require('cookie-parser');
 
 const { PORT } = require('./config/env');
 const routes = require('./routes');
 const { dbInit } = require('./config/db');
+
+const { auth } = require('.//middlewares/authMiddleware.js')
 
 const app = express();
 
@@ -13,6 +16,8 @@ app.set('view engine', 'hbs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(cookieParser());
+app.use(auth);
 app.use(routes);
 
 dbInit();
