@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { isAuth } = require('../middlewares/authMiddleware.js');
 const publicationService = require('../services/publicationService.js');
+const { getErrorMessage } = require('../utils/errorHelpers.js')
 
 router.get('/gallery', async (req, res) => {
     const publications = await publicationService.getAll().lean();
@@ -21,10 +22,16 @@ router.get('/create', isAuth, (req, res) => {
 });
 
 router.post('/create', isAuth, async (req, res) => {
-    const publicationData = { ...req.body, author: req.user._id };
-    await publicationService.create(publicationData);
 
-    res.redirect('/publications/gallery')
-})
+    try {
+        const publicationData = { ...req.body, author: req.user._id };
+        await publicationService.create(publicationData);
+
+        res.redirect('/publications/gallery')
+
+    } catch (error) {
+        return res.render('publication/gallery', { error: getErrorMessage(error) });
+    }
+});
 
 module.exports = router;
