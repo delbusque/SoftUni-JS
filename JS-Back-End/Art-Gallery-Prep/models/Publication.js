@@ -23,10 +23,10 @@ const publicationSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    usersShared: {
-        type: [mongoose.Types.ObjectId],
+    usersShared: [{
+        type: mongoose.Types.ObjectId,
         ref: 'User'
-    }
+    }]
 
 })
 
