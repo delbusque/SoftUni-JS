@@ -1,4 +1,6 @@
 const Publication = require('../models/Publication.js');
+const User = require('../models/User.js');
+
 
 exports.create = (publicationData) => Publication.create(publicationData);
 

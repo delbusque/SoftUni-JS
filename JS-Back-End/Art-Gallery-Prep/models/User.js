@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
     publications: [{
         type: mongoose.Types.ObjectId,
         ref: 'Publication'
-    }]
+    }],
+    shares: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Publication'
+    }],
 });
 
 userSchema.pre('save', function (next) {

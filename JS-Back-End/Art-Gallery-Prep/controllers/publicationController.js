@@ -3,6 +3,7 @@ const router = require('express').Router();
 const { isObjectIdOrHexString } = require('mongoose');
 const { isAuth } = require('../middlewares/authMiddleware.js');
 const publicationService = require('../services/publicationService.js');
+const userService = require('../services/userService.js');
 const { getErrorMessage } = require('../utils/errorHelpers.js')
 
 router.get('/gallery', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/:publicationId/details', async (req, res) => {
     const isAuthor = publication.author._id == req.user?._id;
 
 
-    const isShared = publication.usersShared.map(x => x.toHexString()).includes(req.user._id);
+    const isShared = publication.usersShared.map(x => x.toHexString()).includes(req.user?._id);
     res.render('publication/details', { ...publication, isAuthor, isShared })
 });
 
@@ -29,7 +30,8 @@ router.post('/create', isAuth, async (req, res) => {
     const publicationData = { ...req.body, author: req.user._id };
 
     try {
-        await publicationService.create(publicationData);
+        const publication = await publicationService.create(publicationData);
+        await userService.addPublication(req.user._id, publication);
 
         res.redirect('/publications/gallery')
 
@@ -78,10 +80,13 @@ router.get('/:publicationId/delete', isAuth, async (req, res, next) => {
 
 router.get('/:publicationId/share', isAuth, async (req, res) => {
     const publication = await publicationService.getOne(req.params.publicationId);
+    const user = await userService.getOne(req.user._id);
 
     publication.usersShared.push(req.user._id);
+    user.shares.push(publication);
 
     await publication.save();
+    await user.save();
 
     res.redirect('/');
 })
