@@ -5,7 +5,7 @@ const publicationSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
-    }, 
+    },
     paintingTechnique: {
         type: String,
         required: true
@@ -16,15 +16,15 @@ const publicationSchema = new mongoose.Schema({
     },
     certificate: {
         type: String,
-        enum:['Yes', 'No'],
+        enum: ['Yes', 'No'],
         required: true
     },
-    author:{
+    author: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-    usersShared:{
-        type: mongoose.Types.ObjectId,
+    usersShared: {
+        type: [mongoose.Types.ObjectId],
         ref: 'User'
     }
 
