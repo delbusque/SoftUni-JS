@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
 
-    let housings = await housingService.search(req.query.searching);
+    let housings = await housingService.search(req.query.box);
 
     res.render('home/search', { housings });
 });
