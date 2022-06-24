@@ -12,7 +12,6 @@ exports.auth = (req, res, next) => {
             if (err) {
                 res.clearCookie(COOKIE_SESSION_NAME);
 
-                // return next(err);
                 return res.redirect('/auth/login')
             }
 
@@ -38,6 +37,7 @@ exports.isAuth = (req, res, next) => {
 exports.isGuest = (req, res, next) => {
 
     if (req.user) {
+
         return res.redirect('/');
     }
 

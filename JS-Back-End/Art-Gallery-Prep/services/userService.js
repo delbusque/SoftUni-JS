@@ -8,6 +8,4 @@ exports.addPublication = async (userId, publicationId) => {
     user.publications.push(publicationId);
 
     return await user.save();
-    // return User.updateOne({ _id: userId }, { $push: { publications: publicationId } })
-
 }
