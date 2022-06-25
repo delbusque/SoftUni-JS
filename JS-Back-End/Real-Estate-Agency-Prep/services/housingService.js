@@ -16,7 +16,4 @@ exports.update = (housingId, updatedData) => {
     Housing.findByIdAndUpdate(housingId, updatedData, { runValidators: true })
 };
 
-exports.search = (box) => Housing.find({ type: box }).lean();
-
-//exports.search = (box) => Housing.find({ type: { $regex: box, $options: 'i' } }).lean();
-
+exports.search = (box) => Housing.find({ type: { $regex: `${box}`, $options: 'i' } }).lean();
