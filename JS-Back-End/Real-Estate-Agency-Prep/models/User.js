@@ -42,7 +42,19 @@ userSchema.pre('save', function (next) {
             this.password = hashedPassword;
 
             next();
-        })
+        });
+
+    // bcrypt.hash(this.password, SALT_ROUNDS, (err, hash) => {
+    //     if (err) {
+    //         throw ('Can not hash password !')
+    //     }
+    //     this.password = hash;
+    //     next();
+    // })
+});
+
+userSchema.method('validatePassword', function (password) {
+    return bcrypt.compare(password, this.password);
 });
 
 const User = mongoose.model('User', userSchema);

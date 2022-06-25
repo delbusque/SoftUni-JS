@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
 const router = require('express').Router();
-const { isObjectIdOrHexString } = require('mongoose');
+
 const { isAuth } = require('../middlewares/authMiddleware.js');
-const Housing = require('../models/Housing.js');
+
 const housingService = require('../services/housingService.js');
 const userService = require('../services/userService.js');
+
 const { getErrorMessage } = require('../utils/errorHelpers.js')
 
 router.get('/catalog', async (req, res) => {
@@ -22,9 +22,9 @@ router.get('/:housingId/details', async (req, res) => {
     const isRented = housing.rentedHome.map(x => x.toHexString()).includes(req.user?._id);
 
     const house = await housingService.getOne(req.params.housingId).populate('rentedHome').lean();
-    //const publicationTitles = user.publications.map(x => x.title).join(', ');
+
     const housingTenants = house.rentedHome.map(x => x.name).join(', ');
-    console.log(housingTenants);
+
     res.render('housing/details', { ...housing, isOwner, isRented, isAvailable, housingTenants })
 });
 
