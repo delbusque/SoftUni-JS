@@ -42,7 +42,7 @@ const housingSchema = new mongoose.Schema({
         min: [0, 'Available Pieces should be at least 0'],
         max: [10, 'Available Pieces should be no more than 10'],
     },
-    rentedHome: [{
+    rentedHome: [{  //buyers
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }],

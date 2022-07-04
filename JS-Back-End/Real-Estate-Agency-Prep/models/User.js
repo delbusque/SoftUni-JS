@@ -25,11 +25,11 @@ const userSchema = new mongoose.Schema({
             message: n => `Full Name is not in a valid format !`
         },
     },
-    housings: [{
+    housings: [{  // cryptos
         type: mongoose.Types.ObjectId,
         ref: 'Housing'
     }],
-    rented: [{
+    rented: [{  //buys
         type: mongoose.Types.ObjectId,
         ref: 'Housing'
     }],
