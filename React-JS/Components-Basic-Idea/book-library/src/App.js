@@ -4,6 +4,9 @@ import { BookList } from './BookList';
 import { Header } from './Header';
 import { Button } from './Button';
 import { Form } from './Form';
+import { Timer } from './Timer'
+import { Clicker } from './Clicker';
+
 
 function App() {
 
@@ -43,9 +46,10 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-
+                <Clicker />
                 <Header title="Epos Library" />
-
+                <Timer start={0} />
+                <Timer start={30} />
                 <Form>
                     <label>email@</label>
                     <input type="password"></input>
