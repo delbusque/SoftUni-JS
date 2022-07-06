@@ -10,11 +10,20 @@ export const Clicker = (props) => {
         makeClick(oldClicks => oldClicks + 1); // function syntax for race conditions
     }
 
+    const dangerClicks = clicks > 15;
+
+    if (clicks > 19) {
+        return <h1>End of Clicks</h1>
+    }
+
     return (
         <div>
-            <button onClick={clickHandler}>
-                Click me: {clicks}
-            </button>
+            {dangerClicks && <h1>Danger Clicks</h1>}
+            <div>{clicks > 6
+                ? <h2>Medium Clicks</h2>
+                : <h4>Normal Clicks</h4>}
+            </div>
+            <button onClick={clickHandler}>Click me: {clicks}</button>
         </div>
     );
 }

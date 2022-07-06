@@ -46,7 +46,10 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+
                 <Clicker />
+                <Clicker />
+
                 <Header title="Epos Library" />
                 <Timer start={0} />
                 <Timer start={30} />
