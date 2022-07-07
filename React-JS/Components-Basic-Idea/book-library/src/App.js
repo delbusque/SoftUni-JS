@@ -6,6 +6,7 @@ import { Button } from './Button';
 import { Form } from './Form';
 import { Timer } from './Timer'
 import { Clicker } from './Clicker';
+import { Counter } from './Counter';
 
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
+
+                <Counter />
 
                 <Clicker />
                 <Clicker />
