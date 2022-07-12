@@ -1,38 +1,46 @@
 import { Todo } from "./Todo"
+import { useState, useEffect } from "react"
 
 export const Main = () => {
+
+    const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3030/jsonstore/todos').then(res => res.json())
+            .then(data => setTodos(Object.values(data)));
+    }, []);
+
+    const clickHandler = (todoId) => {
+        setTodos(state => state.map(todo => todo._id == todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+    }
+
     return (
 
-        <main class="main">
+        < main className="main" >
 
-            <section class="todo-list-container">
+            <section className="todo-list-container">
                 <h1>Todo List</h1>
 
-                <div class="add-btn-container">
-                    <button class="btn">+ Add new Todo</button>
+                <div className="add-btn-container">
+                    <button className="btn">+ Add new Todo</button>
                 </div>
 
-                <div class="table-wrapper">
+                <div className="table-wrapper">
 
-
-
-
-                    <table class="table">
+                    <table className="table">
                         <thead>
                             <tr>
-                                <th class="table-header-task">Task</th>
-                                <th class="table-header-status">Status</th>
-                                <th class="table-header-action">Action</th>
+                                <th className="table-header-task">Task</th>
+                                <th className="table-header-status">Status</th>
+                                <th className="table-header-action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <Todo />
-
+                            {todos.map(todo => <Todo key={todo._id} {...todo} onClick={clickHandler} />)}
                         </tbody>
                     </table>
                 </div>
             </section>
-        </main>
+        </main >
     )
 }

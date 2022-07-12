@@ -1,10 +1,16 @@
 export const Todo = (props) => {
+
+    let className = 'todo';
+    if (props.isCompleted) {
+        className = 'todo is-completed';
+    }
+
     return (
-        <tr class="todo is-completed">
-            <td>Give dog a bath</td>
-            <td>Complete</td>
-            <td class="todo-action">
-                <button class="btn todo-btn">Change status</button>
+        <tr className={className}>
+            <td>{props.text}</td>
+            <td>{props.isCompleted ? 'Complete' : 'Incomplete'}</td>
+            <td className="todo-action">
+                <button className="btn todo-btn" onClick={() => props.onClick(props._id)}>Change status</button>
             </td>
         </tr>
     )
