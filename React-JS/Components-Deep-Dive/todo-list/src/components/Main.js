@@ -10,8 +10,15 @@ export const Main = () => {
             .then(data => setTodos(Object.values(data)));
     }, []);
 
-    const clickHandler = (todoId) => {
-        setTodos(state => state.map(todo => todo._id == todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo))
+    const clickHandler = (todo) => {
+        fetch(`http://localhost:3030/jsonstore/todos/${todo._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ...todo, isCompleted: !todo.isCompleted })
+        }).then(res => res.json())
+            .then(modifiedTodo => { setTodos(oldTodos => oldTodos.map(x => x._id == modifiedTodo._id ? modifiedTodo : x)) })
     }
 
     return (
