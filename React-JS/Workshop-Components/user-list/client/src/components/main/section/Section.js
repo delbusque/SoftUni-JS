@@ -2,9 +2,6 @@ export const Section = () => {
     return (
         <div>
 
-            {/* New user button  */}
-            <button class="btn-add btn">Add new user</button>
-
             {/* Pagination component  */}
             <div class="pagination position">
                 <div class="limits">

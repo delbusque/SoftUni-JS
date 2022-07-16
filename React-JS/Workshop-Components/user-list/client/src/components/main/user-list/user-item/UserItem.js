@@ -1,6 +1,8 @@
 export const UserItem = ({
     user,
-    onClickHandler
+    deleteClickHandler,
+    editClickHandler,
+    detailsClickHandler
 }) => {
     const blankImg = 'https://www.w3schools.com/w3css/img_avatar3.png';
 
@@ -17,7 +19,7 @@ export const UserItem = ({
             <td>June 28, 2022</td>
 
             <td class="actions">
-                <button class="btn edit-btn" title="Edit">
+                <button class="btn edit-btn" title="Edit" onClick={() => editClickHandler(user._id)}>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen-to-square"
                         class="svg-inline--fa fa-pen-to-square" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 532 512">
@@ -26,7 +28,7 @@ export const UserItem = ({
                         </path>
                     </svg>
                 </button>
-                <button class="btn delete-btn" title="Delete">
+                <button class="btn delete-btn" title="Delete" onClick={() => deleteClickHandler(user._id)}>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash"
                         class="svg-inline--fa fa-trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 498 512">
                         <path fill="currentColor"
@@ -34,7 +36,7 @@ export const UserItem = ({
                         </path>
                     </svg>
                 </button>
-                <button class="btn info-btn" title="Info" onClick={() => onClickHandler(user._id)}>
+                <button class="btn info-btn" title="Info" onClick={() => detailsClickHandler(user._id)}>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info"
                         class="svg-inline--fa fa-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="-150 0 512 612">
                         <path fill="currentColor"
