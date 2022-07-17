@@ -74,7 +74,7 @@ function App() {
           </div>
 
 
-          <div><button onClick={onSubmitHandler}>Send</button></div>
+          <div><button onClick={onSubmitHandler}>Submit me</button></div>
 
         </form>
 
