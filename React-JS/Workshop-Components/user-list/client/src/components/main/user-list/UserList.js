@@ -67,11 +67,37 @@ export const UserList = ({ users }) => {
         });
     }
 
+    const editHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        console.log(formData);
+        const {
+            firstName,
+            lastName,
+            email,
+            imageUrl,
+            phoneNumber,
+            ...address
+        } = Object.fromEntries(formData);
+        const userData = {
+            firstName,
+            lastName,
+            email,
+            imageUrl,
+            phoneNumber,
+            address
+        }
+
+        userService.edit(userAction.user, userData).then(user => {
+            setUserAction(oldUser => user);
+        })
+    }
+
     return (
         <>
             < div className="table-wrapper" >
                 {userAction.action === UserActions.Details && <UserDetails user={userAction.user} onClose={closeHandler} />}
-                {userAction.action === UserActions.Edit && <UserEdit user={userAction.user} onClose={closeHandler} />}
+                {userAction.action === UserActions.Edit && <UserEdit user={userAction.user} onClose={closeHandler} onEdit={editHandler} />}
                 {userAction.action === UserActions.Delete && <UserDelete user={userAction.user} onClose={closeHandler} />}
                 {userAction.action === UserActions.Add && <UserAdd onClose={closeHandler} />}
 
