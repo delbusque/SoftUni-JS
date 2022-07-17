@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  const infoRef = useRef();
 
   const [values, setValues] = useState({
     username: '',
@@ -11,8 +13,28 @@ function App() {
     userType: 'individual',
     tac: false,
     bio: '',
+    eik: '',
+    egn: ''
 
-  })
+  });
+
+  useEffect(() => {
+    if (values.username && values.age) {
+      infoRef.current.value = `${values.username} - ${values.age}`
+    }
+  }, [values.username, values.age])
+
+
+
+  useEffect(() => {
+    if (values.username && values.age) {
+      setValues(oldValues => ({
+        ...oldValues,
+        bio: `${values.username} - ${values.age}`,
+      }))
+    }
+  }, [values.username, values.age])
+
 
   const onChangeHandler = (e) => {
     setValues(oldValues => ({
@@ -67,16 +89,27 @@ function App() {
             <label htmlFor="corporate-user">  corporate:</label>
             <input type="radio" id='corporate-user' name='userType' checked={values.userType === 'corporate'} value='corporate' onChange={onChangeHandler} />
           </div>
+          <div>
+            <label htmlFor="identifier">{values.userType === 'corporate' ? 'eik ' : 'egn '}</label>
 
+            {values.userType === 'corporate'
+              ? <input type="text" name="eik" id="identifier" value={values.eik} onChange={onChangeHandler} />
+              : <input type="text" name="egn" id="identifier" value={values.egn} onChange={onChangeHandler} />
+            }
+          </div>
           <div>
             <label htmlFor="tac">TaC: </label>
             <input type="checkbox" id='tac' name='tac' checked={values.tac} onChange={onChangeHandler} />
           </div>
 
 
-          <div><button onClick={onSubmitHandler}>Submit me</button></div>
-
+          <div><button onClick={onSubmitHandler} disabled={!values.tac}>Submit me</button></div>
         </form>
+
+        <div>
+          <label htmlFor="uncontrolled">uncontrolled input </label>
+          <input type="text" id="uncontrolled" ref={infoRef} />
+        </div>
 
       </header>
     </div>
