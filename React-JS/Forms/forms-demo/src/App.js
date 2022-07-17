@@ -6,9 +6,9 @@ function App() {
   const [values, setValues] = useState({
     username: '',
     password: '',
-    gender: 'f',
+    gender: 'm',
     age: '',
-    userType: '',
+    userType: 'individual',
     tac: false,
     bio: '',
 
@@ -45,7 +45,7 @@ function App() {
 
           <div>
             <label htmlFor="gender">gender: </label>
-            <select name="gender" id="gender" onChange={onChangeHandler}>
+            <select value={values.gender} name="gender" id="gender" onChange={onChangeHandler}>
               <option value="f">female</option>
               <option value="m">male</option>
             </select>
@@ -63,9 +63,9 @@ function App() {
 
           <div>
             <label htmlFor="individual-user">individual:</label>
-            <input type="radio" id='individual-user' name='userType' defaultValue='individual' onChange={onChangeHandler} />
+            <input type="radio" id='individual-user' name='userType' checked={values.userType === 'individual'} value='individual' onChange={onChangeHandler} />
             <label htmlFor="corporate-user">  corporate:</label>
-            <input type="radio" id='corporate-user' name='userType' value='corporate' onChange={onChangeHandler} />
+            <input type="radio" id='corporate-user' name='userType' checked={values.userType === 'corporate'} value='corporate' onChange={onChangeHandler} />
           </div>
 
           <div>
