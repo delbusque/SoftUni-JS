@@ -1,7 +1,3 @@
-import { useState, useEffect } from 'react';
-
-import * as userService from './services/userService';
-
 import { Footer } from './components/common/Footer';
 import { Header } from './components/common/Header';
 import { Search } from './components/main/search/Search';
@@ -11,12 +7,6 @@ import './App.css';
 
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    userService.getAll().then(users => setUsers(users))
-  }, [])
-
 
   return (
     <div>
@@ -26,7 +16,8 @@ function App() {
         <section class="card users-container">
 
           <Search />
-          <UserList users={users} />
+
+          <UserList />
 
 
           <Section />

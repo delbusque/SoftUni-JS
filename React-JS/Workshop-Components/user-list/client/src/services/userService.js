@@ -14,11 +14,24 @@ export const getOne = async (userId) => {
     return data.user;
 }
 
-export const edit = async (user, userData) => {
-    const responce = await fetch(`${baseUrl}/${user._id}`, {
+export const create = async (user) => {
+    const responce = await fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    });
+    const data = await responce.json();
+
+    return data.user;
+}
+
+export const edit = async (userData, userId) => {
+    const responce = await fetch(`${baseUrl}/${userId}`, {
         method: 'PUT',
         headers: {
-            'text-content': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(userData)
     });
