@@ -2,6 +2,7 @@ import { Routes, Route, Link, useParams } from 'react-router-dom';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Premium from './components/Premium';
+import Product from './components/Product';
 
 import './App.css';
 
@@ -10,8 +11,10 @@ import styles from './components/About.module.css'
 
 
 function App() {
-
+  const params = useParams();
   return (
+
+
     <div className="App">
       <nav>
 
@@ -29,7 +32,7 @@ function App() {
         <Route path='contacts' element={<Contacts />} />
         <Route path='*' element={<Premium />} />
 
-        <Route path='id/:egn' element={<Idm />} />
+        <Route path='products/:productId' element={<Product />} />
 
       </Routes>
 
@@ -37,15 +40,6 @@ function App() {
     </div>
 
   );
-}
-
-function Idm() {
-  let params = useParams();
-
-  return (
-    <h2>This is Param {params.egn}</h2>
-  )
-
 }
 
 export default App;
