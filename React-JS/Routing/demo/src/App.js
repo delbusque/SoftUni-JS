@@ -1,45 +1,49 @@
-import { Routes, Route, Link, useParams } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, NavLink } from 'react-router-dom';
+
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Premium from './components/Premium';
-import Product from './components/Product';
+import Planet from './components/Planet';
 
 import './App.css';
 
 import styles from './components/About.module.css'
 
-
-
 function App() {
-  const params = useParams();
+
+  const styleHandler = ({ isActive }) => {
+    return isActive ? styles['nav-link'] : undefined
+  }
   return (
 
-
     <div className="App">
+
       <nav>
-
-        <div><Link to='/'>Home</Link></div>
-        <div><Link to='contacts'>Contacts</Link></div>
+        <div><NavLink to='/' className={styleHandler}>Home</NavLink></div>
+        <div><NavLink to='contacts' className={styleHandler}>Contacts</NavLink></div>
         <div><Link to='about' className={styles['about']}>About</Link></div>
-
+        <div><NavLink to='planets/1' className={styleHandler}>Planets</NavLink></div>
+        <div><Link to='yavin'>Yavin</Link></div>
       </nav>
-      <h2>Hello React Router </h2>
+      <main className={styles.main}>
+        <Routes>
+          <Route path='/' element={<h3>Sweet Home</h3>} />
+          <Route path='about' element={<About />} />
+          <Route path='contacts' element={<Contacts />} />
+          <Route path='*' element={<Premium />} />
 
+          <Route path='planets/:planetId' element={<Planet />} />
+          <Route path='yavin' element={<Navigate to='/planets/3' replace />} />
 
-      <Routes>
-        <Route path='/' element={<h3>Sweet Home</h3>} />
-        <Route path='about' element={<About />} />
-        <Route path='contacts' element={<Contacts />} />
-        <Route path='*' element={<Premium />} />
-
-        <Route path='products/:productId' element={<Product />} />
-
-      </Routes>
-
+        </Routes>
+      </main>
+      <div>
+        <footer>All rights reserved 2022</footer>
+      </div>
 
     </div>
 
-  );
+  )
 }
 
 export default App;

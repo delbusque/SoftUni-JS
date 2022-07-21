@@ -1,0 +1,15 @@
+.planet {
+    background-color: rgb(227, 187, 209);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(17, 20, 23);
+    height: 300px;
+}
+
+.planet-header {
+    background-color: beige;
+    font-weight: 900;
+}
+
+.nav-link {
+    background-color: aqua;
+}
