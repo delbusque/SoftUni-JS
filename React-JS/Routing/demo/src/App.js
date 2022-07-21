@@ -19,7 +19,11 @@ function App() {
     <div className="App">
 
       <nav>
-        <div><NavLink to='/' className={styleHandler}>Home</NavLink></div>
+        <div>
+          <NavLink to='/' style={(navLinkProps) => navLinkProps.isActive ? { backgroundColor: 'grey' } : undefined}
+          >Home</NavLink>
+        </div>
+
         <div><NavLink to='contacts' className={styleHandler}>Contacts</NavLink></div>
         <div><Link to='about' className={styles['about']}>About</Link></div>
         <div><NavLink to='planets/1' className={styleHandler}>Planets</NavLink></div>
