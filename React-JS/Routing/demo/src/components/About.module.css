@@ -1,12 +1,20 @@
 .about {
     background-color: aquamarine;
+    text-decoration: none;
+
 }
 
 .main {
-    height: 600px;
+    height: 650px;
 
 }
 
 .nav-link {
     background-color: aqua;
+    text-decoration: none;
+}
+
+.non-link {
+    text-decoration: none;
+
 }

@@ -14,26 +14,26 @@ import styles from './components/About.module.css'
 function App() {
 
   const styleHandler = ({ isActive }) => {
-    return isActive ? styles['nav-link'] : undefined
+    return isActive ? styles['nav-link'] : styles['non-link']
   }
 
   return (
 
     <div className="App">
 
-      <nav>
-        <div>
+      <nav >
+        <div className='nav'>
           <NavLink to='/'
 
-            style={(navLinkProps) => navLinkProps.isActive ? { backgroundColor: 'grey' } : undefined}
+            style={(navLinkProps) => navLinkProps.isActive ? { backgroundColor: 'grey' } : { textDecoration: 'none' }}
           >Home</NavLink>
         </div>
 
-        <div><NavLink to='contacts' className={styleHandler}>Contacts</NavLink></div>
-        <div><Link to='about' className={styles['about']}>About</Link></div>
-        <div><NavLink to='planets/1' className={styleHandler}>Planets</NavLink></div>
-        <div><Link to='yavin'>Yavin</Link></div>
-        <div><NavLink to='planets' className={styleHandler}>Planets List</NavLink></div>
+        <div className='nav'><NavLink to='contacts' className={styleHandler}>Contacts</NavLink></div>
+        <div className='nav'><Link to='about' className={styles['about']}>About</Link></div>
+        <div className='nav'><NavLink to='planets/1' className={styleHandler}>Planets</NavLink></div>
+        <div className='nav'><Link to='yavin'>Yavin</Link></div>
+        <div className='nav'><NavLink to='planets' className={styleHandler}>Planets List</NavLink></div>
       </nav>
       <main className={styles.main}>
         <Routes>
@@ -45,9 +45,7 @@ function App() {
           <Route path='planets/:planetId' element={<Planet />} />
           <Route path='yavin' element={<Navigate to='/planets/3' replace />} />
 
-          <Route path='planets/details/:planetName' element={<CurrentPlanet />} />
-
-          <Route path='planets' element={<PlanetList />} />
+          <Route path='planets/*' element={<PlanetList />} />
 
         </Routes>
       </main>

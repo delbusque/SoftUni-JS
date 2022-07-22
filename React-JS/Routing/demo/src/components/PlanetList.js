@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, Routes, Route } from 'react-router-dom';
+import CurrentPlanet from './CurrentPlanet';
 
 
 
@@ -16,13 +16,21 @@ const PlanetList = () => {
 
 
     return (
-        <div>
-            {planets.map((planet, i) => {
-                const id = i + 1;
-                return <Link to={{ pathname: `details/${planet.name}`, state: { item: planet } }} key={i + 1}><h2>{planet.name}</h2></Link>
-            })}
+        <>
+            <div>
+                {planets.map((planet, i) => {
+                    const id = i + 1;
+                    return <Link to={`details/${planet.name}`} key={i + 1}><h2>{planet.name}</h2></Link>
+                })}
 
-        </div>
+            </div>
+
+            <div>
+                <Routes>
+                    <Route path='details/:planetName/*' element={<CurrentPlanet planets={planets} />} />
+                </Routes>
+            </div>
+        </>
 
     )
 }

@@ -32,7 +32,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav {
+  background-color: antiquewhite;
+  display: inline-flex;
+  margin: 1rem;
+  border: 1em;
+  text-decoration: none;
+
 }
