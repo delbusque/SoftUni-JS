@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import styles from './Task.module.css'
+
 
 const CreateTask = ({ taskCreateHandler }) => {
     const [task, setTask] = useState('');
@@ -16,7 +18,7 @@ const CreateTask = ({ taskCreateHandler }) => {
     return (
         <form onSubmit={onSubmit}>
             <input type='text' placeholder='Water flowers' name='taskName' value={task} onChange={onChange} />
-            <input type='submit' value='Submit' />
+            <input type='submit' className={styles['button-wrapper']} value='Submit' />
         </form>
     )
 }

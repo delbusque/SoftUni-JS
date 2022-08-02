@@ -21,10 +21,13 @@ function App() {
     })
   }
 
+  const taskDeleteHandler = (taskId) => {
+    setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId));
+  }
 
   return (
     <div className={styles['div-wrapper']}>
-      <TodoList tasks={tasks} />
+      <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />
 
       <CreateTask taskCreateHandler={taskCreateHandler} />
     </div>
