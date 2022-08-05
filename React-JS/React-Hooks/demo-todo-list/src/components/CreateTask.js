@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Task.module.css'
+import * as taskService from '../services/taskService.js';
 
 
 const CreateTask = ({ taskCreateHandler }) => {
@@ -11,13 +12,18 @@ const CreateTask = ({ taskCreateHandler }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        taskCreateHandler(task);
-        setTask('');
+        let data = Object.fromEntries(new FormData(e.target));
+        taskService.createTask(data)
+            .then(res => {
+                taskCreateHandler(res);
+                return setTask('');
+            })
+            .catch(err => console.log(err));
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <input type='text' placeholder='Water flowers' name='taskName' value={task} onChange={onChange} />
+            <input type='text' placeholder='Water flowers' name='title' value={task} onChange={onChange} />
             <input type='submit' className={styles['button-wrapper']} value='Submit' />
         </form>
     )

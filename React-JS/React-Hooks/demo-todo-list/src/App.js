@@ -1,5 +1,8 @@
-import { useState } from 'react';
 import uniqid from 'uniqid';
+
+import useFetch from './hooks/useFetch.js';
+
+import * as taskService from './services/taskService.js';
 
 import styles from './App.module.css'
 import CreateTask from './components/CreateTask.js';
@@ -7,31 +10,38 @@ import TodoList from './components/TodoList.js';
 
 function App() {
 
-  const [tasks, setTasks] = useState([
-    { _id: uniqid(), title: 'First task' },
-    { _id: uniqid(), title: 'Second task' },
-    { _id: uniqid(), title: 'Third task' }
-  ]);
+  const baseUrl = 'http://localhost:3030/jsonstore/todos';
+
+  const [tasks, setTasks, isLoading] = useFetch(baseUrl, []);
+
+  //useEffect(() => {
+  //  taskService.getTasks()
+  //    .then(data => setTasks(oldTasks => (Object.values(data))))
+  //    .catch(err => console.log(err));
+  //}, []);
+
 
   const taskCreateHandler = (task) => {
-    let _id = uniqid();
 
     setTasks(oldTasks => {
-      return [...oldTasks, { _id, title: task }]
+      return [...oldTasks, task]
     })
   }
 
   const taskDeleteHandler = (taskId) => {
-    setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId));
+    taskService.deleteTask(taskId)
+      .then(() => setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId)))
+      .catch(err => console.log(err));
   }
 
   return (
     <div className={styles['div-wrapper']}>
-      <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />
-
+      {isLoading ? <p>Loading ... </p> : <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />}
       <CreateTask taskCreateHandler={taskCreateHandler} />
     </div>
   );
 }
 
 export default App;
+
+

@@ -7,7 +7,8 @@ const TodoList = ({ tasks, taskDeleteHandler }) => {
             <h2>My Todo List::</h2>
 
             <ul>
-                {tasks.map(x => <Task key={x._id} task={x} taskDeleteHandler={taskDeleteHandler} />)}
+                {tasks.map(x => <Task key={x._id} task={x}
+                    taskDeleteHandler={taskDeleteHandler} />)}
             </ul>
         </>
     )
