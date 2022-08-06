@@ -11,7 +11,6 @@ const Task = ({ task, taskDeleteHandler }) => {
 
     return (
 
-
         <li className={styles['li-wrapper']} >
             {task.title}
             < button className={styles['button-wrapper']} onClick={() => taskDeleteHandler(task._id)}>
@@ -21,11 +20,6 @@ const Task = ({ task, taskDeleteHandler }) => {
                 Edit me
             </button>
         </li >
-
-
-
-
-
     )
 }
 

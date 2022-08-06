@@ -1,6 +1,7 @@
 import uniqid from 'uniqid';
 
 import useFetch from './hooks/useFetch.js';
+import useTodosApi from './hooks/useTodosApi.js';
 
 import * as taskService from './services/taskService.js';
 
@@ -13,13 +14,7 @@ function App() {
   const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
   const [tasks, setTasks, isLoading] = useFetch(baseUrl, []);
-
-  //useEffect(() => {
-  //  taskService.getTasks()
-  //    .then(data => setTasks(oldTasks => (Object.values(data))))
-  //    .catch(err => console.log(err));
-  //}, []);
-
+  const { removeTodo } = useTodosApi();
 
   const taskCreateHandler = (task) => {
 
@@ -28,10 +23,10 @@ function App() {
     })
   }
 
-  const taskDeleteHandler = (taskId) => {
-    taskService.deleteTask(taskId)
-      .then(() => setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId)))
-      .catch(err => console.log(err));
+  const taskDeleteHandler = async (taskId) => {
+    await removeTodo(taskId);
+
+    setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId));
   }
 
   return (
