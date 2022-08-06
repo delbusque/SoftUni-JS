@@ -24,8 +24,8 @@ function App() {
   }
 
   const taskDeleteHandler = async (taskId) => {
-    await removeTodo(taskId);
 
+    await removeTodo(taskId);
     setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId));
   }
 

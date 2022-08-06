@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styles from './Task.module.css'
 import * as taskService from '../services/taskService.js';
 
-
 const CreateTask = ({ taskCreateHandler }) => {
     const [task, setTask] = useState('');
 
