@@ -1,5 +1,8 @@
 import styles from './Task.module.css'
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+
+import TaskContext from '../contexts/TaskContext';
+
 
 const Task = ({ task, taskDeleteHandler }) => {
     // Unmounting component by returning a function for side effect
@@ -8,6 +11,9 @@ const Task = ({ task, taskDeleteHandler }) => {
 
         return () => console.log('Unmounted');
     }, [])
+
+    let value = useContext(TaskContext);
+    console.log(value);
 
     return (
 

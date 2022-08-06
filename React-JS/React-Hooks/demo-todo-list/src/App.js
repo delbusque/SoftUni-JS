@@ -3,6 +3,8 @@ import uniqid from 'uniqid';
 import useFetch from './hooks/useFetch.js';
 import useTodosApi from './hooks/useTodosApi.js';
 
+import TaskContext from './contexts/TaskContext.js';
+
 import * as taskService from './services/taskService.js';
 
 import styles from './App.module.css'
@@ -30,11 +32,14 @@ function App() {
   }
 
   return (
-    <div className={styles['div-wrapper']}>
-      {isLoading ? <p>Loading ... </p> : <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />}
-      <CreateTask taskCreateHandler={taskCreateHandler} />
-    </div>
+    <TaskContext.Provider value={'Lets do it'}>
+      <div className={styles['div-wrapper']}>
+        {isLoading ? <p>Loading ... </p> : <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />}
+        <CreateTask taskCreateHandler={taskCreateHandler} />
+      </div>
+    </TaskContext.Provider>
   );
+
 }
 
 export default App;
