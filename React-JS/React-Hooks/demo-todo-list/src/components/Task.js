@@ -12,8 +12,7 @@ const Task = ({ task }) => {
         return () => console.log('Unmounted');
     }, [])
 
-    const { taskDeleteHandler } = useContext(TaskContext);
-
+    let { taskDeleteHandler } = useContext(TaskContext);
 
     return (
 

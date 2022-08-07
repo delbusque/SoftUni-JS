@@ -3,6 +3,8 @@ import useTodosApi from './hooks/useTodosApi.js';
 
 import TaskContext from './contexts/TaskContext.js';
 
+import * as taskService from './services/taskService.js';
+
 import styles from './App.module.css'
 import CreateTask from './components/CreateTask.js';
 import TodoList from './components/TodoList.js';
