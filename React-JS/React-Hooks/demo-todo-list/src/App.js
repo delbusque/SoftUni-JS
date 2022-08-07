@@ -1,11 +1,7 @@
-import uniqid from 'uniqid';
-
 import useFetch from './hooks/useFetch.js';
 import useTodosApi from './hooks/useTodosApi.js';
 
 import TaskContext from './contexts/TaskContext.js';
-
-import * as taskService from './services/taskService.js';
 
 import styles from './App.module.css'
 import CreateTask from './components/CreateTask.js';
@@ -32,9 +28,9 @@ function App() {
   }
 
   return (
-    <TaskContext.Provider value={'Lets do it'}>
+    <TaskContext.Provider value={{ tasks, taskDeleteHandler }}>
       <div className={styles['div-wrapper']}>
-        {isLoading ? <p>Loading ... </p> : <TodoList tasks={tasks} taskDeleteHandler={taskDeleteHandler} />}
+        {isLoading ? <p>Loading ... </p> : <TodoList />}
         <CreateTask taskCreateHandler={taskCreateHandler} />
       </div>
     </TaskContext.Provider>

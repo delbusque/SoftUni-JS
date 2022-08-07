@@ -1,3 +1,8 @@
 .div-wrapper {
-    margin: 30px;
+    margin: 10px;
+    background-color: rgb(65, 71, 71);
+    color: aliceblue;
+    height: 800px;
+    text-align: center;
+
 }

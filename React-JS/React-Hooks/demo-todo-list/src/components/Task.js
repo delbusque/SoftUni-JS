@@ -4,7 +4,7 @@ import { useEffect, useContext } from 'react';
 import TaskContext from '../contexts/TaskContext';
 
 
-const Task = ({ task, taskDeleteHandler }) => {
+const Task = ({ task }) => {
     // Unmounting component by returning a function for side effect
     useEffect(() => {
         console.log('Mounted');
@@ -12,8 +12,8 @@ const Task = ({ task, taskDeleteHandler }) => {
         return () => console.log('Unmounted');
     }, [])
 
-    let value = useContext(TaskContext);
-    console.log(value);
+    const { taskDeleteHandler } = useContext(TaskContext);
+
 
     return (
 
