@@ -3,13 +3,13 @@ const baseUrl = 'http://localhost:3030/jsonstore/todos';
 const useTodosApi = () => {
 
     const removeTodo = (taskId) => {
-        fetch(`${baseUrl}/${taskId}`, {
+        return fetch(`${baseUrl}/${taskId}`, {
             method: 'DELETE'
         }).then(res => res.json())
     }
 
     const createTodo = (task) => {
-        fetch(`${baseUrl}`, {
+        return fetch(`${baseUrl}`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(task)
