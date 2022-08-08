@@ -14,7 +14,7 @@ function App() {
   const baseUrl = 'http://localhost:3030/jsonstore/todos';
 
   const [tasks, setTasks, isLoading] = useFetch(baseUrl, []);
-  const { removeTodo } = useTodosApi();
+  const { removeTodo, updateTodo } = useTodosApi();
 
   const taskCreateHandler = (task) => {
 
@@ -29,8 +29,16 @@ function App() {
     setTasks(oldTasks => oldTasks.filter(x => x._id !== taskId));
   }
 
+  const editTaskHandler = async (task, newTitle) => {
+    const updatedTask = { ...task, title: newTitle };
+
+    await updateTodo(task._id, updatedTask);
+    setTasks(oldTasks => oldTasks.map(x => x._id == task._id ? updatedTask : x));
+
+  }
+
   return (
-    <TaskContext.Provider value={{ tasks, taskDeleteHandler }}>
+    <TaskContext.Provider value={{ tasks, taskDeleteHandler, editTaskHandler }}>
       <div className={styles['div-wrapper']}>
         {isLoading ? <p>Loading ... </p> : <TodoList />}
         <CreateTask taskCreateHandler={taskCreateHandler} />

@@ -16,9 +16,17 @@ const useTodosApi = () => {
         }).then(res => res.json())
     }
 
+    const updateTodo = (taskId, data) => {
+        return fetch(`${baseUrl}/${taskId}`, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+    };
+
     return {
         removeTodo,
-        createTodo
+        createTodo,
+        updateTodo
     }
 
 }
