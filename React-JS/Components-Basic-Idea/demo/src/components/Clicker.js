@@ -8,17 +8,21 @@ export const Clicker = () => {
         setClicks(clicks => clicks + 1);
     }
 
-    const dangerClicks = clicks > 15;
+    const dangerClicks = clicks > 10;
+
+    if (clicks > 15) {
+        return <h5>Clicks Finished</h5>
+    }
 
     return (
         <>
-            <div>{dangerClicks && <h2>Danger Clicks</h2>}</div>
+            <div>{dangerClicks && <h5>Danger Clicks</h5>}</div>
             <div>
                 {!dangerClicks &&
                     <div>
                         {clicks > 5
-                            ? <h2>Medium Clicks</h2>
-                            : <h2>Normal Clicks</h2>
+                            ? <h5>Medium Clicks</h5>
+                            : <h5>Normal Clicks</h5>
                         }
                     </div>}
             </div>
