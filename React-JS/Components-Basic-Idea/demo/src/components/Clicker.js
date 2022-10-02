@@ -11,7 +11,9 @@ export const Clicker = () => {
     const dangerClicks = clicks > 10;
 
     if (clicks > 15) {
-        return <h5>Clicks Finished</h5>
+        return (
+            <h5>Clicks Finished</h5>
+        );
     }
 
     return (
@@ -29,5 +31,5 @@ export const Clicker = () => {
 
             <button onClick={clickHandler}>Click me: {clicks}</button>
         </>
-    )
+    );
 }
