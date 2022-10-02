@@ -8,7 +8,22 @@ export const Clicker = () => {
         setClicks(clicks => clicks + 1);
     }
 
+    const dangerClicks = clicks > 15;
+
     return (
-        <button onClick={clickHandler}>Click me: {clicks}</button>
+        <>
+            <div>{dangerClicks && <h2>Danger Clicks</h2>}</div>
+            <div>
+                {!dangerClicks &&
+                    <div>
+                        {clicks > 5
+                            ? <h2>Medium Clicks</h2>
+                            : <h2>Normal Clicks</h2>
+                        }
+                    </div>}
+            </div>
+
+            <button onClick={clickHandler}>Click me: {clicks}</button>
+        </>
     )
 }
