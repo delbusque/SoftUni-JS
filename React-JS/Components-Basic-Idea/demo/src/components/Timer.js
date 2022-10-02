@@ -18,6 +18,7 @@ const Timer = () => {
 
     }
 
+
     return (
         //<h1>Timer: {sec > 4 ? `${min} min. : ${sec}` : sec} sec.</h1>
         <div>Timer: {sec > 4
