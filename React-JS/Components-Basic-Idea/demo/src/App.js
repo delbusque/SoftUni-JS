@@ -1,4 +1,5 @@
 import './App.css';
+import { Clicker } from './components/Clicker.js';
 import Timer from './components/Timer.js';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
       <header className="App-header">
 
+        <Clicker />
         <Timer />
 
       </header>
