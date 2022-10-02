@@ -20,7 +20,12 @@ const Timer = () => {
 
     return (
         //<h1>Timer: {sec > 4 ? `${min} min. : ${sec}` : sec} sec.</h1>
-        <h1>{clock()}</h1>
+        <div>Timer: {sec > 4
+            ? <h2>{min} min. : {sec} sec.</h2>
+            : <h3>{sec} sec.</h3>
+        }
+        </div>
+        //<h1>{clock()}</h1>
     )
 }
 
