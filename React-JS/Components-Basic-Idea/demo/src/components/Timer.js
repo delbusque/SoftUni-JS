@@ -4,7 +4,8 @@ const Timer = () => {
 
     const [time, setTime] = useState(0);
     setTimeout(() => {
-        setTime(time + 1);
+        // setTime(time + 1);
+        setTime(oldTime => oldTime + 1); //prevent race conditions
     }, 1000)
 
     return (
