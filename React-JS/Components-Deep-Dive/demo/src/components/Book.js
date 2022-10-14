@@ -1,30 +1,39 @@
-import { click } from "@testing-library/user-event/dist/click.js";
 import { useState, useEffect } from "react"
+import styles from './Book.module.css'
 
 export const Book = (props) => {
 
     const [marked, setMarked] = useState(false);
+    const [doubled, setDoubled] = useState(false);
 
     useEffect(() => {
-        console.log('Mounting');
+        console.log('Mounting - ' + props.title);
     }, [])
 
     useEffect(() => {
         console.log('Updating');
-    }, [marked])
+    }, [marked, props.title, marked, doubled])
 
     const clickHandler = () => {
         setMarked(oldStyle => !oldStyle);
     }
 
-    let styles = {};
+    const doubleClickHandler = () => {
+        setDoubled(oldStyle => !oldStyle);
+    }
+
+    let style = {};
 
     if (marked) {
-        styles.backgroundColor = 'pink';
+        style.backgroundColor = 'pink';
+    }
+    if (doubled) {
+        style.backgroundColor = 'orange';
     }
 
     return (
-        <div onClick={clickHandler} style={styles}>
+        <div onClick={clickHandler} onDoubleClick={doubleClickHandler} style={style}
+            className={`${styles['book-background']} ${styles['book-font']}`}>
             <h2>{props.title}</h2>
             <h3>{props.author}</h3>
             <span>{props.year}, </span>
