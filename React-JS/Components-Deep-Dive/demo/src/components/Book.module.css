@@ -1,0 +1,14 @@
+.book-background {
+    background-color: brown;
+    padding: 13px;
+    margin: 16px;
+
+}
+
+.book-font {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-style: solid;
+    border-width: 3px;
+    border-color: aliceblue;
+    border-radius: 55px;
+}
