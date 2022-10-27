@@ -1,17 +1,6 @@
 import { User } from "./User.js"
-import { useState, useEffect } from 'react'
-import * as userService from '../services/userService.js'
 
-export const UserList = () => {
-
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        userService.getAll().then(
-            data => {
-                setUsers(data.users)
-            }
-        )
-    }, [])
+export const UserList = ({ users }) => {
 
     return (
         <table className="table">
