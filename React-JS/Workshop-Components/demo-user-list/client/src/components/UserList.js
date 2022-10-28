@@ -1,6 +1,6 @@
 import { User } from "./User.js"
 
-export const UserList = ({ users }) => {
+export const UserList = ({ users, actionHandler }) => {
 
     return (
         <table className="table">
@@ -62,7 +62,7 @@ export const UserList = ({ users }) => {
             <tbody>
                 {users.map(user => (
                     <tr key={user._id}>
-                        <User user={user} />
+                        <User user={user} actionHandler={actionHandler} />
                     </tr>
                 ))}
 
