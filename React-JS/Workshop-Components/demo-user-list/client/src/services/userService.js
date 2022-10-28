@@ -6,6 +6,12 @@ export const getAll = async () => {
     return result;
 }
 
+export const getOne = async (user) => {
+    const responce = await fetch(`${baseUrl}/${user._id}`)
+    const result = await responce.json();
+    return result;
+}
+
 export const addUser = (userData) => fetch(baseUrl, {
     method: 'POST',
     headers: {
