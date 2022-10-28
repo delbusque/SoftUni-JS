@@ -10,6 +10,7 @@ import { Pagination } from './components/Pagination.js';
 import { UserList } from './components/UserList.js';
 import { CreateUser } from './components/CreateUser.js';
 import { AddNewUser } from './components/AddNewUser.js';
+import { UserInfo } from './components/UserInfo.js';
 
 function App() {
 
@@ -23,9 +24,18 @@ function App() {
     }, [])
 
     const [isAddNewUser, setIsAddNewUser] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     const newUserHandler = () => {
         setIsAddNewUser(oldState => !oldState);
+    }
+
+    const actionHandler = (user) => {
+        setSelectedUser(user);
+    }
+
+    const closeHandler = (user) => {
+        setSelectedUser(null);
     }
 
     return (
@@ -37,13 +47,17 @@ function App() {
 
                     <div className="table-wrapper">
 
-                        <UserList users={users} />
+                        <UserList users={users} actionHandler={actionHandler} />
 
                     </div>
 
                     <AddNewUser newUserHandler={newUserHandler} />
 
                     {isAddNewUser && <CreateUser newUserHandler={newUserHandler} users={users} setUsers={setUsers} />}
+
+                    {selectedUser &&
+                        users.map(user => selectedUser._id == user._id ? <UserInfo key={user._id} userInfo={selectedUser} closeHandler={closeHandler} /> : user._id)
+                    }
 
                     <Pagination />
                 </section>
