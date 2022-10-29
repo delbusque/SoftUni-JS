@@ -11,6 +11,7 @@ import { UserList } from './components/UserList.js';
 import { CreateUser } from './components/CreateUser.js';
 import { AddNewUser } from './components/AddNewUser.js';
 import { UserInfo } from './components/UserInfo.js';
+import { DeleteUser } from './components/DeleteUser.js';
 
 function App() {
 
@@ -25,17 +26,24 @@ function App() {
 
     const [isAddNewUser, setIsAddNewUser] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [deletedUser, setDeletedUser] = useState(null);
 
     const newUserHandler = () => {
         setIsAddNewUser(oldState => !oldState);
     }
 
-    const actionHandler = (user) => {
-        setSelectedUser(user);
+    const actionHandler = (user, e) => {
+        if (e.title == 'Info') {
+            setSelectedUser(user);
+        }
+        if (e.title == 'Delete') {
+            setDeletedUser(user);
+        }
     }
 
     const closeHandler = (user) => {
         setSelectedUser(null);
+        setDeletedUser(null);
     }
 
     return (
@@ -56,7 +64,11 @@ function App() {
                     {isAddNewUser && <CreateUser newUserHandler={newUserHandler} users={users} setUsers={setUsers} />}
 
                     {selectedUser &&
-                        users.map(user => selectedUser._id == user._id ? <UserInfo key={user._id} userInfo={selectedUser} closeHandler={closeHandler} /> : user._id)
+                        users.map(user => selectedUser._id == user._id && <UserInfo key={user._id} userInfo={selectedUser} closeHandler={closeHandler} />)
+                    }
+
+                    {deletedUser &&
+                        users.map(user => deletedUser._id == user._id && <DeleteUser users={users} setUsers={setUsers} key={user._id} deletedUser={deletedUser} closeHandler={closeHandler} />)
                     }
 
                     <Pagination />
