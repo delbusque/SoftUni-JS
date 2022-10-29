@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 export const DeleteUser = ({ closeHandler, deletedUser, users, setUsers }) => {
     const deleteHandler = () => {
-        userService.deleteOne(deletedUser).then(data => console.log(data))
+        userService.deleteOne(deletedUser)
     }
     useEffect(() => {
         userService.getAll().then(
