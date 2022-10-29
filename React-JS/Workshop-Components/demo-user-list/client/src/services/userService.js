@@ -12,6 +12,17 @@ export const getOne = async (user) => {
     return result;
 }
 
+export const deleteOne = async (user) => {
+    const responce = await fetch(`${baseUrl}/${user._id}`, {
+        method: 'DELETE',
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    const result = await responce.json();
+    return result;
+}
+
 export const addUser = (userData) => fetch(baseUrl, {
     method: 'POST',
     headers: {
