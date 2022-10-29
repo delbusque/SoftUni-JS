@@ -1,17 +1,16 @@
 import * as userService from '../services/userService.js'
-import { useEffect } from 'react'
 
-export const DeleteUser = ({ closeHandler, deletedUser, users, setUsers }) => {
+export const DeleteUser = ({ closeHandler, deletedUser, setUsers }) => {
     const deleteHandler = () => {
-        userService.deleteOne(deletedUser)
+        userService.deleteOne(deletedUser).then(() => {
+            userService.getAll().then(
+                data => {
+                    setUsers(data.users)
+                }
+            )
+        })
     }
-    useEffect(() => {
-        userService.getAll().then(
-            data => {
-                setUsers(data.users)
-            }
-        )
-    }, [users])
+
 
     return (
         <div className="overlay">

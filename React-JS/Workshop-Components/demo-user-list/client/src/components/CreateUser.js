@@ -1,8 +1,6 @@
 import * as userService from '../services/userService.js'
-import { useEffect } from 'react'
 
-
-export const CreateUser = ({ newUserHandler, users, setUsers }) => {
+export const CreateUser = ({ newUserHandler, setUsers }) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -10,16 +8,15 @@ export const CreateUser = ({ newUserHandler, users, setUsers }) => {
         const userData = Object.fromEntries(new FormData(e.target));
         const { firstName, lastName, email, phoneNumber, imageUrl, ...address } = userData;
         const newUser = { firstName, lastName, email, phoneNumber, imageUrl, address };
-        userService.addUser(newUser).then(() => newUserHandler())
+        userService.addUser(newUser).then(() => {
+            newUserHandler();
+            userService.getAll().then(
+                data => {
+                    setUsers(data.users)
+                }
+            )
+        })
     }
-
-    useEffect(() => {
-        userService.getAll().then(
-            data => {
-                setUsers(data.users)
-            }
-        )
-    }, [users])
 
     return (
         <div className="overlay">
