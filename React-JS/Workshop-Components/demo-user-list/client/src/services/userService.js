@@ -30,3 +30,11 @@ export const addUser = (userData) => fetch(baseUrl, {
     },
     body: JSON.stringify(userData)
 }).then(res => res.json())
+
+export const editUser = (userData, userId) => fetch(`${baseUrl}/${userId}`, {
+    method: 'PUT',
+    headers: {
+        'content-type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+}).then(res => res.json())
