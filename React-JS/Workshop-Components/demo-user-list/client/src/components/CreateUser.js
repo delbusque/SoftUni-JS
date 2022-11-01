@@ -35,13 +35,14 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        userService.addUser(newUser).then(() => {
-            newUserHandler();
+        userService.addUser(newUser).then(user => {
+
             userService.getAll().then(
                 data => {
                     setUsers(data.users)
                 }
             )
+            newUserHandler();
         })
     }
 
