@@ -1,4 +1,12 @@
+import { useRef, useEffect } from "react"
+
 export const UserInfo = ({ userInfo, closeHandler }) => {
+
+    const infoRef = useRef();
+
+    useEffect(() => {
+        infoRef.current.textContent = `${userInfo.firstName}'s Details`
+    }, [])
 
     return (
         <div className="overlay">
@@ -6,7 +14,7 @@ export const UserInfo = ({ userInfo, closeHandler }) => {
             <div className="modal">
                 <div className="detail-container">
                     <header className="headers">
-                        <h2>User Detail</h2>
+                        <h2 ref={infoRef}>User Details</h2>
                         <button className="btn close" onClick={closeHandler}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
