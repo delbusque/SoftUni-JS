@@ -29,7 +29,12 @@ export const addUser = (userData) => fetch(baseUrl, {
         'content-type': 'application/json'
     },
     body: JSON.stringify(userData)
-}).then(res => res.json())
+}).then(res => {
+    if (res.ok) {
+        return res.json()
+    }
+    throw { message: 'Can not add user' }
+})
 
 export const editUser = (userData, userId) => fetch(`${baseUrl}/${userId}`, {
     method: 'PUT',

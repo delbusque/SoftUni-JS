@@ -3,6 +3,18 @@ import { useState } from 'react';
 
 export const CreateUser = ({ newUserHandler, setUsers }) => {
 
+    const [errors, setErrors] = useState({});
+
+    const errorHandler = (e, limit) => {
+        setErrors(oldErrors => ({
+            ...oldErrors,
+            [e.target.name]: values[e.target.name].length < limit
+        }))
+    }
+
+    const isFormValid = !Object.values(errors).some(e => e);
+
+
     const [values, setValues] = useState({
         firstName: '',
         lastName: '',
@@ -43,7 +55,7 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                 }
             )
             newUserHandler();
-        })
+        }).catch(err => console.log(err.message))
     }
 
     return (
@@ -68,23 +80,26 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                                 <label htmlFor="firstName">First name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="firstName" name="firstName" type="text"
+                                    <input id="firstName" name="firstName" type="text" onBlur={(e) => errorHandler(e, 3)}
                                         value={values.firstName} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
-                                    First name should be at least 3 characters long!
-                                </p>
+                                {errors.firstName &&
+                                    <p className="form-error">
+                                        First name should be at least 3 characters long!
+                                    </p>
+                                }
                             </div>
                             <div className="form-group">
                                 <label htmlFor="lastName">Last name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="lastName" name="lastName" type="text"
+                                    <input id="lastName" name="lastName" type="text" onBlur={(e) => errorHandler(e, 3)}
                                         value={values.lastName} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
+                                {errors.lastName && <p className="form-error">
                                     Last name should be at least 3 characters long!
-                                </p>
+                                </p>}
+
                             </div>
                         </div>
 
@@ -93,19 +108,19 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                                 <label htmlFor="email">Email</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-envelope"></i></span>
-                                    <input id="email" name="email" type="text"
+                                    <input id="email" name="email" type="text" onBlur={(e) => errorHandler(e, 5)}
                                         value={values.email} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">Email is not valid!</p>
+                                {errors.email && <p className="form-error">Email is not valid!</p>}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="phoneNumber">Phone number</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-phone"></i></span>
-                                    <input id="phoneNumber" name="phoneNumber" type="text"
+                                    <input id="phoneNumber" name="phoneNumber" type="text" onBlur={(e) => errorHandler(e, 10)}
                                         value={values.phoneNumber} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">Phone number is not valid!</p>
+                                {errors.phoneNumber && <p className="form-error">Phone number is not valid!</p>}
                             </div>
                         </div>
 
@@ -113,10 +128,10 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                             <label htmlFor="imageUrl">Image Url</label>
                             <div className="input-wrapper">
                                 <span><i className="fa-solid fa-image"></i></span>
-                                <input id="imageUrl" name="imageUrl" type="text"
+                                <input id="imageUrl" name="imageUrl" type="text" onBlur={(e) => errorHandler(e, 7)}
                                     value={values.imageUrl} onChange={onChangeHandler} />
                             </div>
-                            <p className="form-error">ImageUrl is not valid!</p>
+                            {errors.imageUrl && <p className="form-error">ImageUrl is not valid!</p>}
                         </div>
 
                         <div className="form-row">
@@ -124,23 +139,23 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                                 <label htmlFor="country">Country</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-map"></i></span>
-                                    <input id="country" name="country" type="text"
+                                    <input id="country" name="country" type="text" onBlur={(e) => errorHandler(e, 2)}
                                         value={values.country} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
+                                {errors.country && <p className="form-error">
                                     Country should be at least 2 characters long!
-                                </p>
+                                </p>}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="city">City</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-city"></i></span>
-                                    <input id="city" name="city" type="text"
+                                    <input id="city" name="city" type="text" onBlur={(e) => errorHandler(e, 3)}
                                         value={values.city} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
+                                {errors.city && <p className="form-error">
                                     City should be at least 3 characters long!
-                                </p>
+                                </p>}
                             </div>
                         </div>
 
@@ -149,27 +164,28 @@ export const CreateUser = ({ newUserHandler, setUsers }) => {
                                 <label htmlFor="street">Street</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-map"></i></span>
-                                    <input id="street" name="street" type="text"
+                                    <input id="street" name="street" type="text" onBlur={(e) => errorHandler(e, 3)}
                                         value={values.street} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
+                                {errors.street && <p className="form-error">
                                     Street should be at least 3 characters long!
-                                </p>
+                                </p>}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="streetNumber">Street number</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-house-chimney"></i></span>
-                                    <input id="streetNumber" name="streetNumber" type="text"
+                                    <input id="streetNumber" name="streetNumber" type="text" onBlur={(e) => errorHandler(e, 1)}
                                         value={values.streetNumber} onChange={onChangeHandler} />
                                 </div>
-                                <p className="form-error">
+                                {errors.streetNumber && <p className="form-error">
                                     Street number should be a positive number!
-                                </p>
+                                </p>}
                             </div>
                         </div>
                         <div id="form-actions">
-                            <button id="action-save" className="btn" type="submit">Save</button>
+                            <button id="action-save" className="btn" type="submit"
+                                disabled={!isFormValid}>Save</button>
                             <button id="action-cancel" className="btn" type="button" onClick={newUserHandler}>
                                 Cancel
                             </button>
