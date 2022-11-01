@@ -1,6 +1,4 @@
 import * as userService from '../services/userService.js'
-import { useEffect } from 'react';
-
 export const EditUser = ({ editedUser, setEditedUser, closeHandler, setUsers }) => {
 
     const submitHandler = (e) => {
