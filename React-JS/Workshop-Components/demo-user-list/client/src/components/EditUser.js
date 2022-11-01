@@ -26,7 +26,6 @@ export const EditUser = ({ editedUser, setEditedUser, closeHandler, setUsers }) 
     }
 
     const onChangeHandler = (e) => {
-        console.log(e.currentTarget);
         setValues(oldValues => ({
             ...oldValues,
             [e.target['name']]: e.target['value']
