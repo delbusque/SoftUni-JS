@@ -1,0 +1,17 @@
+.nav{
+    display: inline-block;
+    margin-right: 30px;
+    padding: 20px;
+    color: blueviolet;
+    text-decoration: none;
+}
+
+ul{
+    padding: 15px;
+}
+
+.nav-img{
+    width: 3em;
+    position: relative;
+    top: 7px;
+}
