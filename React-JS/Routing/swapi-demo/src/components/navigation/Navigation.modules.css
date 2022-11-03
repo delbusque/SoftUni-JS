@@ -1,5 +1,5 @@
-.nav{
-    
+.nav {
+
     font-family: monospace;
     font-size: large;
     display: inline-block;
@@ -8,13 +8,17 @@
     text-decoration: none;
 }
 
-.nav-wrapper{
+.nav-wrapper {
     align-items: center;
     margin-top: 40px;
 }
 
-.nav-img{
+.nav-img {
     width: 4em;
     position: relative;
     top: 10px;
+}
+
+.active-link {
+    background: antiquewhite;
 }

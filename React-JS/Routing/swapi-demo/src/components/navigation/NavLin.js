@@ -1,8 +1,14 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const NavLin = ({ api }) => {
 
     return (
-        <Link className='nav' to={`/${api}`}>{api.toUpperCase()}</Link>
+        <NavLink
+            style={({ isActive }) => ({ background: isActive ? 'antiquewhite' : undefined })}
+
+            to={`/${api}`} className='nav'
+        >
+            {api.toUpperCase()}
+        </NavLink>
     )
 }
