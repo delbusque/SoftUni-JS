@@ -1,0 +1,20 @@
+.nav{
+    
+    font-family: monospace;
+    font-size: large;
+    display: inline-block;
+    margin-right: 2em;
+    color: blueviolet;
+    text-decoration: none;
+}
+
+.nav-wrapper{
+    align-items: center;
+    margin-top: 40px;
+}
+
+.nav-img{
+    width: 4em;
+    position: relative;
+    top: 10px;
+}
