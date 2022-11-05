@@ -1,7 +1,9 @@
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, useNavigate, Link, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { pictures } from "../../pictures.js";
 
+import styles from './Films.module.css'
+import { Comments } from "./Comments.js";
 
 export const FilmCard = ({ films }) => {
 
@@ -23,18 +25,24 @@ export const FilmCard = ({ films }) => {
 
     return (
         <div>
-            <div className="film-wrap">
-                <section className="card-wrap">
+            <div className={styles['film-wrap']}>
+                <section className={styles['card-wrap']}>
                     <h1>{film.title}</h1>
                     <p>director: {film.director}</p>
                     <p>release date: {film.release_date}</p>
                 </section>
 
-                <img className='img-wrap' src={image} alt="" />
-
+                <img className={styles['img-wrap']} src={image} alt="" />
             </div>
-            <button className="back-button" onClick={backFilmsHandler}>Back to all episodes</button>
 
+
+
+
+            <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}>View comments</Link>
+
+            <Routes>
+                <Route path={`comments`} element=<Comments /> />
+            </Routes>
         </div>
     )
 }

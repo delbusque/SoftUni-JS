@@ -42,7 +42,7 @@ function App() {
           <Route path='/vehicles' element=<Vehicles /> />
           <Route path='/starships' element=<Starships /> />
 
-          <Route path='/films/:filmId' element=<FilmCard films={films} /> />
+          <Route path='/films/:filmId/*' element=<FilmCard films={films} /> />
         </Routes>
 
       </div>
