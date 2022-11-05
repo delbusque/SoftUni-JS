@@ -5,7 +5,7 @@ import { pictures } from "../../pictures.js";
 import styles from './Films.module.css'
 import { Comments } from "./Comments.js";
 
-export const FilmCard = ({ films }) => {
+export const FilmCard = ({ films, setFilms }) => {
 
     const { filmId } = useParams();
 
@@ -17,8 +17,7 @@ export const FilmCard = ({ films }) => {
     useEffect(() => {
         films.forEach(film => filmId == film.episode_id && setFilm(film));
         pictures.forEach(pic => pic.episode_id == filmId && setImage(pic.imgUrl));
-
-    }, [])
+    }, [filmId, films])
 
     const viewComments = () => {
         setShowComments(state => !state);
@@ -36,14 +35,13 @@ export const FilmCard = ({ films }) => {
                 <img className={styles['img-wrap']} src={image} alt="" />
             </div>
 
-
-
-
             <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}
                 onClick={viewComments}>{!showComments ? 'View comments' : 'Hide comments'}</Link>
+
             {showComments &&
                 <Routes>
-                    <Route path={`comments`} element=<Comments /> />
+                    <Route path={`comments`} element=<Comments
+                        film={film} setFilm={setFilm} films={films} setFilms={setFilms} /> />
                 </Routes>}
 
         </div>

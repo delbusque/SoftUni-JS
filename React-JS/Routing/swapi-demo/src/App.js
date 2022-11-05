@@ -23,8 +23,10 @@ function App() {
   }, [])
 
   const [films, setFilms] = useState([]);
+
   useEffect(() => {
     swapiService.getFilms().then(result => setFilms(result.results));
+
   }, []);
 
   return (
@@ -42,7 +44,8 @@ function App() {
           <Route path='/vehicles' element=<Vehicles /> />
           <Route path='/starships' element=<Starships /> />
 
-          <Route path='/films/:filmId/*' element=<FilmCard films={films} /> />
+          <Route path='/films/:filmId/*' element=<FilmCard
+            films={films} setFilms={setFilms} /> />
         </Routes>
 
       </div>
