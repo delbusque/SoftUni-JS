@@ -8,7 +8,8 @@ import { Comments } from "./Comments.js";
 export const FilmCard = ({ films }) => {
 
     const { filmId } = useParams();
-    const navigate = useNavigate();
+
+    const [showComments, setShowComments] = useState(false);
 
     const [film, setFilm] = useState({});
     const [image, setImage] = useState('')
@@ -19,8 +20,8 @@ export const FilmCard = ({ films }) => {
 
     }, [])
 
-    const backFilmsHandler = () => {
-        navigate(`/films`);
+    const viewComments = () => {
+        setShowComments(state => !state);
     }
 
     return (
@@ -38,11 +39,13 @@ export const FilmCard = ({ films }) => {
 
 
 
-            <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}>View comments</Link>
+            <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}
+                onClick={viewComments}>{!showComments ? 'View comments' : 'Hide comments'}</Link>
+            {showComments &&
+                <Routes>
+                    <Route path={`comments`} element=<Comments /> />
+                </Routes>}
 
-            <Routes>
-                <Route path={`comments`} element=<Comments /> />
-            </Routes>
         </div>
     )
 }
