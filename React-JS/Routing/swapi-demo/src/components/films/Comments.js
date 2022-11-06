@@ -4,12 +4,12 @@ import styles from './Films.module.css'
 
 export const Comments = ({ film, setFilm, films, setFilms }) => {
 
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState({ name: '', comment: '' });
 
     const commentHandler = (e) => {
         e.preventDefault();
         let commentData = { name: e.target.name.value, comment: e.target.comment.value };
-        setComments(state => [...state, commentData]);
+        setComments(state => commentData);
     }
 
 
@@ -25,9 +25,9 @@ export const Comments = ({ film, setFilm, films, setFilms }) => {
         <div className={styles['comments-wrap']}>
 
             <div className={styles['view-comments']}>
-                {comments.length < 1 ? <h4>
-                    There are still no comments !</h4>
-                    : film.created.map(c => <h4>{c.name}: {c.comment}</h4>)
+                {comments.name == '' && comments.comment == '' ? <h4>
+                    There is still no comment !</h4>
+                    : <h4>{film.created.name}: {film.created.comment}</h4>
                 }
 
             </div>

@@ -36,7 +36,7 @@ export const FilmCard = ({ films, setFilms }) => {
             </div>
 
             <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}
-                onClick={viewComments}>{!showComments ? 'View comments' : 'Hide comments'}</Link>
+                onClick={viewComments}>{!showComments ? 'Make comment' : 'Hide your comment'}</Link>
 
             {showComments &&
                 <Routes>
