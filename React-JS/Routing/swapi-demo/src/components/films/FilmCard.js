@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link, Routes, Route } from "react-router-dom"
+import { useParams, Link, Routes, Route } from "react-router-dom"
 import { useState, useEffect, useContext } from 'react'
 import { pictures } from "../../pictures.js";
 

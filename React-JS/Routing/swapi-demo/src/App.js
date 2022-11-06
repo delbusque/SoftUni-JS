@@ -16,6 +16,10 @@ import Vehicles from './components/Vehicles.js';
 import Starships from './components/Starships.js';
 import { FilmCard } from './components/films/FilmCard.js';
 
+import { useFetch } from './components/hooks/useFetch.js'
+
+const baseUrl = 'https://swapi.py4e.com/api/films';
+
 function App() {
 
   const [api, setApi] = useState({});
@@ -24,10 +28,11 @@ function App() {
   }, [])
 
   const [films, setFilms] = useState([]);
+  let filmsData = useFetch(baseUrl);
+  console.log(filmsData);
 
   useEffect(() => {
     swapiService.getFilms().then(result => setFilms(result.results));
-
   }, []);
 
   return (
@@ -45,8 +50,7 @@ function App() {
             <Route path='/vehicles' element=<Vehicles /> />
             <Route path='/starships' element=<Starships /> />
 
-            <Route path='/films/:filmId/*' element=<FilmCard
-              setFilms={setFilms} /> />
+            <Route path='/films/:filmId/*' element=<FilmCard /> />
           </Routes>
         </FilmsContext.Provider>
       </div>
