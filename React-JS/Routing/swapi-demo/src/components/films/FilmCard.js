@@ -1,11 +1,16 @@
 import { useParams, useNavigate, Link, Routes, Route } from "react-router-dom"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { pictures } from "../../pictures.js";
 
 import styles from './Films.module.css'
 import { Comments } from "./Comments.js";
 
-export const FilmCard = ({ films, setFilms }) => {
+import { FilmsContext } from "./FilmContext.js";
+
+
+export const FilmCard = () => {
+
+    const films = useContext(FilmsContext);
 
     const { filmId } = useParams();
 
@@ -36,12 +41,12 @@ export const FilmCard = ({ films, setFilms }) => {
             </div>
 
             <Link to={`/films/${filmId}/comments`} className={styles['comments-link']}
-                onClick={viewComments}>{!showComments ? 'Make comment' : 'Hide your comment'}</Link>
+                onClick={viewComments}>{!showComments ? 'Make comment' : 'Hide latest comment'}</Link>
 
             {showComments &&
                 <Routes>
                     <Route path={`comments`} element=<Comments
-                        film={film} setFilm={setFilm} films={films} setFilms={setFilms} /> />
+                        film={film} setFilm={setFilm} /> />
                 </Routes>}
 
         </div>

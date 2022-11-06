@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import styles from './Films.module.css'
 
-export const Comments = ({ film, setFilm, films, setFilms }) => {
+export const Comments = ({ film, setFilm }) => {
 
     const [comments, setComments] = useState({ name: '', comment: '' });
 
@@ -18,16 +18,13 @@ export const Comments = ({ film, setFilm, films, setFilms }) => {
 
     }, [comments])
 
-
-
-
     return (
         <div className={styles['comments-wrap']}>
 
             <div className={styles['view-comments']}>
                 {comments.name == '' && comments.comment == '' ? <h4>
-                    There is still no comment !</h4>
-                    : <h4>{film.created.name}: {film.created.comment}</h4>
+                    LATEST COMMENT: There is still no comment !</h4>
+                    : <h4>LATEST COMMENT: {film.created.name} said "{film.created.comment}"</h4>
                 }
 
             </div>

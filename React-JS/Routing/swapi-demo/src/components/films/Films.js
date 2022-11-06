@@ -1,10 +1,13 @@
 import styles from './Films.module.css'
 
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { FilmsContext } from './FilmContext.js';
 
-export default function Films({ films }) {
 
+export default function Films() {
 
+    const films = useContext(FilmsContext);
 
     return (
         <ul className={styles['film-ul']}>

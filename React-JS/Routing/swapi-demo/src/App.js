@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
+import { FilmsContext } from './components/films/FilmContext.js';
+
 import * as swapiService from './services/swapiService.js'
 
 import Navigation from './components/navigation/Navigation.js';
@@ -13,7 +15,6 @@ import Species from './components/Species.js';
 import Vehicles from './components/Vehicles.js';
 import Starships from './components/Starships.js';
 import { FilmCard } from './components/films/FilmCard.js';
-
 
 function App() {
 
@@ -32,22 +33,22 @@ function App() {
   return (
     <div className="App ">
       <div className="App-header">
+        <FilmsContext.Provider value={films}>
+          <Navigation api={api} />
 
-        <Navigation api={api} />
+          <Routes>
+            <Route path='/' element=<Home /> />
+            <Route path='/films' element=<Films /> />
+            <Route path='/people' element=<People /> />
+            <Route path='/planets' element=<Planets /> />
+            <Route path='/species' element=<Species /> />
+            <Route path='/vehicles' element=<Vehicles /> />
+            <Route path='/starships' element=<Starships /> />
 
-        <Routes>
-          <Route path='/' element=<Home /> />
-          <Route path='/films' element=<Films films={films} /> />
-          <Route path='/people' element=<People /> />
-          <Route path='/planets' element=<Planets /> />
-          <Route path='/species' element=<Species /> />
-          <Route path='/vehicles' element=<Vehicles /> />
-          <Route path='/starships' element=<Starships /> />
-
-          <Route path='/films/:filmId/*' element=<FilmCard
-            films={films} setFilms={setFilms} /> />
-        </Routes>
-
+            <Route path='/films/:filmId/*' element=<FilmCard
+              setFilms={setFilms} /> />
+          </Routes>
+        </FilmsContext.Provider>
       </div>
     </div>
   );
