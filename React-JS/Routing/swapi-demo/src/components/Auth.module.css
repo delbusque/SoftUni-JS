@@ -1,0 +1,35 @@
+.auth-form {
+  margin-top: 52px;
+}
+
+.auth-el {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border: 5px;
+}
+
+.auth-button {
+  background-color: #282c34;
+  border: 2px solid blueviolet;
+  color: white;
+  padding: 2px 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px auto;
+  font-family: monospace;
+}
+
+.auth-inp {
+  border-radius: 9px;
+}
+
+.field {
+  font-family: monospace;
+  margin-top: 50px;
+}
+
+a {
+  color: blueviolet;
+}
