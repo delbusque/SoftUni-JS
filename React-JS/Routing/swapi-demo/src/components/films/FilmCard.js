@@ -5,7 +5,7 @@ import { pictures } from "../../pictures.js";
 import styles from './Films.module.css'
 import { Comments } from "./Comments.js";
 
-import { FilmsContext } from "./FilmContext.js";
+import { FilmsContext } from "../../contexts/FilmContext.js";
 
 
 export const FilmCard = () => {

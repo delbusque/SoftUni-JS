@@ -2,7 +2,7 @@ import styles from './Films.module.css'
 
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
-import { FilmsContext } from './FilmContext.js';
+import { FilmsContext } from '../../contexts/FilmContext.js';
 
 
 export default function Films() {
