@@ -8,4 +8,10 @@ export const getFilms = async () => {
     return data;
 }
 
+export const getPlanets = async () => {
+    const res = await fetch(`${baseUrl}planets`);
+    const data = await res.json();
+    return data;
+}
+
 export const getOneFilm = (filmId) => fetch(`${baseUrl}films/${filmId}`).then(res => res.json())
