@@ -1,6 +1,6 @@
 export default function People() {
 
     return (
-        <header></header>
+        <h4 className="redirect">You`ve been successfully signed out !</h4>
     )
 }
