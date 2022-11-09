@@ -18,6 +18,7 @@ import Films from './components/films/Films.js';
 import People from './components/People.js';
 import Planets from './components/Planets.js';
 import Login from './components/Login.js';
+import Logout from './components/Logout.js';
 import Register from './components/Register.js';
 import Starships from './components/Starships.js';
 import { FilmCard } from './components/films/FilmCard.js';
@@ -30,6 +31,7 @@ function App() {
   const [api, setApi] = useState({});
   const [films, setFilms] = useState([]);
   const [planets, setPlanets] = useState([]);
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -43,15 +45,19 @@ function App() {
     const result = await authService.login(values);
     if (result.email) {
       setUser(result)
-      console.log(user);
+
       return navigate('/')
     } else {
       return navigate('/starships')
     }
+  };
+
+  const userLogout = () => {
+    setUser({});
   }
 
   return (
-    <UserContext.Provider value={{ submitHandler, user }}>
+    <UserContext.Provider value={{ submitHandler, user, userLogout }}>
       <div className="App ">
         <div className="App-header">
 
@@ -65,6 +71,7 @@ function App() {
                 <Route path='/planets' element=<Planets /> />
                 <Route path='/login' element=<Login /> />
                 <Route path='/register' element=<Register /> />
+                <Route path='/logout' element=<Logout /> />
                 <Route path='/starships' element=<Starships /> />
 
                 <Route path='/films/:filmId/*' element=<FilmCard /> />
