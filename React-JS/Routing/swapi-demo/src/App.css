@@ -8,9 +8,14 @@
   display: flex;
   flex-direction: column;
   color: white;
-
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.redirect {
+  font-family: monospace;
+  text-align: center;
+  margin: 55px auto;
 }

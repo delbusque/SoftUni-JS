@@ -26,9 +26,18 @@
 
 .nav-auth {
   display: inline-block;
-  margin-left: 130px;
+  margin-left: 70px;
 }
 
 .auth {
   margin-right: 1em;
+}
+
+.nav-user {
+  color: palegoldenrod;
+  font-family: monospace;
+  font-size: small;
+
+  display: inline-block;
+  margin-right: 1.5em;
 }
