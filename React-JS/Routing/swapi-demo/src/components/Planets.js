@@ -8,7 +8,7 @@ import { PlanetsContext } from '../contexts/PlanetsContext.js';
 export default function Planets() {
 
     const planets = useContext(PlanetsContext);
-    console.log(planets);
+
     return (
         <ul className={styles['film-ul']}>
             {planets.map(planet =>
