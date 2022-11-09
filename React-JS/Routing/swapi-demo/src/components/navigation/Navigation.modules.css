@@ -9,15 +9,13 @@
 }
 
 .nav-wrapper {
-  align-items: center;
   margin-top: 40px;
+  padding-left: 0px;
 }
 
 .nav-img {
   width: 4em;
-  position: relative;
-  top: 10px;
-  right: 25px;
+  vertical-align: middle;
 }
 
 .active-link {
@@ -37,7 +35,6 @@
   color: palegoldenrod;
   font-family: monospace;
   font-size: small;
-
   display: inline-block;
   margin-right: 1.5em;
 }
