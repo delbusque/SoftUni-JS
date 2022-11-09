@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import styles from './Auth.module.css'
 import { UserContext } from '../contexts/UserConext.js';
 
@@ -25,7 +25,7 @@ export default function Login() {
             <button type="submit" className={styles['auth-button']}>Login</button>
             <p className={styles.field}>
                 <span>
-                    If you don't have profile click <a href="/register">here</a>
+                    If you don't have a profile click <Link to="/register">here</Link>
                 </span>
             </p>
         </form>

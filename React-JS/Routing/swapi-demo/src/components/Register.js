@@ -1,4 +1,5 @@
 import styles from './Auth.module.css'
+import { useNavigate, Link } from "react-router-dom"
 
 export default function Register() {
 
@@ -14,7 +15,7 @@ export default function Register() {
             <button type="submit" className={styles['auth-button']}>Register</button>
             <p className={styles.field}>
                 <span>
-                    If you have a profile click <a href="/register">here</a>
+                    If you have a profile click <Link to="/login">here</Link>
                 </span>
             </p>
         </form>
