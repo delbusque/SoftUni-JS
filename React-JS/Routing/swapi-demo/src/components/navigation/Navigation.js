@@ -3,12 +3,12 @@ import { Link, NavLink } from 'react-router-dom'
 import './Navigation.modules.css'
 import uniqid from 'uniqid';
 
-import { UserContext } from '../../contexts/UserConext.js';
+import { AuthContext } from '../../contexts/UserConext.js';
 
 
 export default function Navigation({ api }) {
 
-    const { user } = useContext(UserContext);
+    const { user } = useContext(AuthContext);
 
     const apis = Object.keys(api);
 

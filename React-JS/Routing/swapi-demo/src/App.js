@@ -3,7 +3,7 @@
 // let filmsData = useFetch(baseUrl);
 
 import { useState, useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import { FilmsContext } from './contexts/FilmContext.js';
@@ -22,19 +22,14 @@ import Logout from './components/Logout.js';
 import Register from './components/Register.js';
 import Starships from './components/Starships.js';
 import { FilmCard } from './components/films/FilmCard.js';
-
-import * as authService from './services/authService.js'
-
-import { useLocaleStorage } from './hooks/useLocalStorage.js'
+import { AuthProvider } from './contexts/UserConext.js';
 
 function App() {
-  const navigate = useNavigate();
 
   const [api, setApi] = useState({});
   const [films, setFilms] = useState([]);
   const [planets, setPlanets] = useState([]);
 
-  const [user, setUser] = useLocaleStorage('auth', {});
 
   useEffect(() => {
     swapiService.getApi().then(data => setApi(data));
@@ -42,24 +37,9 @@ function App() {
     swapiService.getPlanets().then(result => setPlanets(result.results));
   }, [])
 
-  const setUserHandler = async (values, e) => {
-    e.preventDefault();
-    const result = await authService.login(values);
-    if (result.email) {
-      setUser(result)
-
-      return navigate('/')
-    } else {
-      return navigate('/starships')
-    }
-  };
-
-  const userLogout = () => {
-    setUser({});
-  }
 
   return (
-    <UserContext.Provider value={{ setUserHandler, user, userLogout }}>
+    <AuthProvider>
       <div className="App ">
         <div className="App-header">
 
@@ -83,7 +63,7 @@ function App() {
 
         </div>
       </div>
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 

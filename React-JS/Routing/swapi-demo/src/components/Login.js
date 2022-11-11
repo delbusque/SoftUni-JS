@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate, Link } from "react-router-dom"
 import styles from './Auth.module.css'
-import { UserContext } from '../contexts/UserConext.js';
+import { AuthContext } from '../contexts/UserConext.js';
 
 export default function Login() {
 
-    const { setUserHandler } = useContext(UserContext)
+    const { setUserHandler } = useContext(AuthContext)
 
     const [values, setValues] = useState({ email: '', password: '' });
 
