@@ -5,7 +5,7 @@ import { UserContext } from '../contexts/UserConext.js';
 
 export default function Login() {
 
-    const { submitHandler } = useContext(UserContext)
+    const { setUserHandler } = useContext(UserContext)
 
     const [values, setValues] = useState({ email: '', password: '' });
 
@@ -15,7 +15,7 @@ export default function Login() {
 
     return (
 
-        <form className={styles['auth-form']} onSubmit={(e) => submitHandler(values, e)}>
+        <form className={styles['auth-form']} onSubmit={(e) => setUserHandler(values, e)}>
             <div className={styles['auth-el']}>
                 <input className={styles['auth-inp']} type="email" id="email" name="email" placeholder="Sokka@gm.com"
                     value={values.email} onChange={inputHandler} />

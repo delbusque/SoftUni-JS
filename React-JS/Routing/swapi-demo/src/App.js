@@ -25,6 +25,8 @@ import { FilmCard } from './components/films/FilmCard.js';
 
 import * as authService from './services/authService.js'
 
+import { useLocaleStorage } from './hooks/useLocalStorage.js'
+
 function App() {
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ function App() {
   const [films, setFilms] = useState([]);
   const [planets, setPlanets] = useState([]);
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useLocaleStorage('auth', {});
 
   useEffect(() => {
     swapiService.getApi().then(data => setApi(data));
@@ -40,7 +42,7 @@ function App() {
     swapiService.getPlanets().then(result => setPlanets(result.results));
   }, [])
 
-  const submitHandler = async (values, e) => {
+  const setUserHandler = async (values, e) => {
     e.preventDefault();
     const result = await authService.login(values);
     if (result.email) {
@@ -57,7 +59,7 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{ submitHandler, user, userLogout }}>
+    <UserContext.Provider value={{ setUserHandler, user, userLogout }}>
       <div className="App ">
         <div className="App-header">
 
